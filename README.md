@@ -1,2 +1,2 @@
 # CafeliaCoffee
-Its one of a kind coffee shop.
+/////////  It's a one of a kind coffee shop.  /////////
