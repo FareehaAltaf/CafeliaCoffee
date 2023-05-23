@@ -56,6 +56,28 @@ section:nth-child(even){
     text-transform: uppercase;
 }
 
+.main-btn{
+    margin-top: 1rem;
+    display: flex;
+    position: absolute;
+    width: 17rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    color:#fff;
+    background: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding:.8rem 3rem;
+    /* right : 10px; */
+    
+}
+
+.main-btn:hover{
+    background: var(--brown);
+    letter-spacing: .1rem;
+}
+
 .btn{
     margin-top: 1rem;
     display: flex;
@@ -262,7 +284,7 @@ header .icons #menu-bars{
     display: flex;
     flex-wrap: wrap;
     /* grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); */
-    gap:1.5rem;
+    gap:1.0rem;
     /* padding-top: 5rem; */
     /* padding-bottom: 5rem; */
     justify-content: center;
@@ -270,13 +292,13 @@ header .icons #menu-bars{
 }
 
 .dishes .box-container .box .dish-img {
-    width: 50rem;
-    height: 35rem;
+    width: 88%;
+    height: 55%;
     /* height: auto; */
 }
 
 /* creating the white box */
-.dishes .box-container .box{
+.dishes .box-container .box {
     padding: 2.5rem;
     background:#fff;
     border-radius: .5rem;
@@ -285,7 +307,8 @@ header .icons #menu-bars{
     position: relative;
     overflow: hidden;
     text-align: center;
-    height: 60rem;
+    height: 50rem;
+    width: 40rem;
     /* vertical-align: auto; */
 }
 /* 
@@ -422,15 +445,15 @@ placement & degin of the eye and heart hovering over our image */
     /* padding-bottom: 5rem; */
     justify-content: center;
     /* vertical-align: auto; */
-}
+ }
 
-.menu .box-container .box .image img {
+/* .menu .box-container .box .image img {
     width: 50rem;
     height: 35rem;
     
-}
+} */
 
-/* creating the white box */
+/* creating the white box *//*
 .menu .box-container .box{
     padding: 2.5rem;
     background:#fff;
@@ -442,9 +465,31 @@ placement & degin of the eye and heart hovering over our image */
     text-align: center;
     height: 60rem;
     width: 55rem;
-    /* vertical-align: auto; */
+    /* vertical-align: auto; 
+} */
+
+.menu .box-container .box .image img {
+    width: 88%;
+    height: 25rem;
 }
 
+/* creating the white box */
+.menu .box-container .box {
+    padding: 2.5rem;
+    background:#fff;
+    border-radius: .5rem;
+    border:.1rem solid rgba(0,0,0,.2);
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    height: 50rem;
+    width: 40rem;
+    /* vertical-align: auto; */
+}
+.menu .box-container .box .btn {
+    bottom: 2REM;
+}
 
 /* .menu .box-container{
     display: grid;
@@ -495,6 +540,7 @@ placement & degin of the eye and heart hovering over our image */
 .menu .box-container .box .content{
     padding:2rem;
     padding-top: 0;
+    height: auto;
 }
 
 .menu .box-container .box .content .stars{
