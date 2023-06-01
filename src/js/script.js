@@ -73,3 +73,9 @@ else if (top.visible_id == 'two') {
 var t = setTimeout("swipe()",3000);
 }
 swipe();
+
+const cartButton = document.querySelector('.fa-shopping-cart');
+
+cartButton.addEventListener('click', function () {
+    cartButton.classList.toggle('is-active');
+});

@@ -136,9 +136,10 @@ header .navbar a:hover{
 }
 
 header .icons i,
-header .icons a{
+header .icons a,
+header .icons button{
     cursor: pointer;
-    margin-left: .5rem;
+    /* margin-left: .5rem; */
     height:4.5rem;
     line-height: 4.5rem;
     width:4.5rem;
@@ -279,16 +280,25 @@ header .icons #menu-bars{
 .swiper-pagination-bullet-active{
     background:var(--brown);
 }
+
+.dishes{
+    padding-bottom: 5rem;
+}
+
+
+
 /* sizing of the content in our box */
 .dishes .box-container{
     display: flex;
     flex-wrap: wrap;
     /* grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); */
-    gap:1.0rem;
+    gap:2.0rem;
     /* padding-top: 5rem; */
     /* padding-bottom: 5rem; */
     justify-content: center;
     /* vertical-align: auto; */
+    /* background-color: #27a123; */
+    /* box-shadow: #292929 10px 10px 1px ; */
 }
 
 .dishes .box-container .box .dish-img {
@@ -315,7 +325,7 @@ header .icons #menu-bars{
 placement & degin of the eye and heart hovering over our image */
 .dishes .box-container .box .fa-heart,
 .dishes .box-container .box .fa-eye{
-    position: absolute;
+    position: relative;
     top:1.5rem;
     background:#eee;
     border-radius: 50%;
@@ -569,6 +579,42 @@ placement & degin of the eye and heart hovering over our image */
     margin-left: 1rem;
     font-size: 2.5rem;
 }
+
+
+/* .hamburger {
+    display: flex;
+    flex-direction: row;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+} */
+
+/* .hamburger ,.hamburger:after, .hamburger::before {
+    width: 100%;
+} */
+
+.shopping-cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20%;
+    min-height: 100vh;
+    display: block;
+    z-index: 98;
+    background-color: var(--light-color);
+    padding-top: 120px;
+}
+/* Here the items will go */
+.shopping-cart nav a {
+    display: flex;
+    flex-direction: column;
+}
+
 
 .order form{
     max-width:90rem;
