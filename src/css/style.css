@@ -108,7 +108,7 @@ header{
     display: flex;   /*flex property sets the flexible length on flexible items. */
     align-items: center;
     justify-content: space-between;
-    z-index: 1000;
+    z-index: 900;
     box-shadow: var(--box-shadow);
 }
 
@@ -598,22 +598,280 @@ placement & degin of the eye and heart hovering over our image */
     width: 100%;
 } */
 
+.backdrop {
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 950;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.backdrop.show {
+    display: block;
+    opacity: 1;
+
+}
+
+
+
 .shopping-cart {
     position: fixed;
     top: 0;
     right: 0;
     width: 20%;
-    min-height: 100vh;
+    height: 100vh;
     display: block;
-    z-index: 98;
+    z-index: 1000;
     /* background-color: var(--light-color); */
     background-color: #0000009d;
-    padding-top: 120px;
+    /* padding-top: 120px; */
+    box-shadow: -10px 0 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(110%);
+    transition: 0.5s ease-in-out;
 }
-/* Here the items will go */
-.shopping-cart nav a {
+
+.shopping-cart.open {
+    transform: translateX(0);
+}
+
+
+/* Cart Content */
+
+.cart-content {
+    height: 100%;
     display: flex;
     flex-direction: column;
+    /* background-color: red; */
+}
+
+/* Cart Header */
+.cart-header {
+    padding: 1rem;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    position: relative;
+}
+
+.header-title span {
+    position: absolute;
+    top: -5px;
+    right: -20px;
+    width: 17px;
+    height: 17px;
+    background-color: #fff;
+    border-radius: 50%;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.cart-header .close-btn {
+    font-size: 3.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.cart-header .close-btn:hover {
+    transform: scale(1.1);
+    opacity: 0.5;
+}
+
+/* Cart Logo */
+.bxs-cart {
+    font-size: 7rem;
+    color: #fff;
+    /* margin-left: 1rem;
+    margin-top: 1rem; */
+}
+
+/* Cart Items */
+
+.cart-items {
+    flex: 1;
+    overflow-x: hidden;
+
+}
+
+ /* cart Item */ 
+/* 
+ .cart-item{
+    width: 240px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.797);
+    border-radius: 10px;
+    margin-left: 15px;
+} */
+
+
+.cart-item {
+    position: relative;
+    padding: 1rem;
+    width: 100%;
+    min-height: 150px;
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.831);
+}
+
+.remove-item {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.remove-item span {
+    color: #fff;
+    font-size: 20px;
+    user-select: none;
+}
+
+.item-img {
+    flex: 1;
+}
+
+.item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.item-details {
+    flex: 2;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 15px;
+}
+
+.item-details p {
+    color: #c58532;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.item-details .qty {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.item-details .qty span {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1), -px -1px 2px rgba(0, 0, 0, 0.1);
+    user-select: none;
+    transition: scale 0.2s ease;
+    /* Side Bar Video: https://www.youtube.com/watch?v=_nnqP94Tu9g */
+}
+
+.item-details .qty span:hover {
+    scale: 1.1;
+}
+
+.item-details .qty span:active {
+    scale: 1;
+}
+
+.qty span:first-of-type{
+    font-size: 3rem;
+    padding-bottom: 2px;
+}
+
+
+
+.cart-item table {
+    align-items: center;
+    border:1px;
+    padding: 5px;
+    text-align: center;
+    border-spacing: 15px; 
+}
+
+
+ .cart-item-button{
+    width: 30px;
+    height: 20px;
+    background-color: #5f5f5f;
+    border-radius: 15px;
+    color: #eee;
+ } 
+
+/* .cart-items {
+    flex: 1;
+    overflow-x: hidden;
+} */
+
+/* Cart actions */
+.cart-actions {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+    flex: 0.4;
+    background-color: #c5c4c480;
+}
+
+.cart-actions .subtotal {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.cart-actions button {
+    border: none;
+    background-color: #000;
+    color: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 14px;
+    text-transform:  uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+.cart-actions button:hover {
+    opacity: 0.8;
+}
+
+.cart-actions button:nth-of-type(2) {
+    background-color: #fff;
+    color: #000;
 }
 
 
@@ -789,25 +1047,4 @@ placement & degin of the eye and heart hovering over our image */
     }
 
 }
-
- /* cart Item*/ 
-
- .cart-item{
-    width: 240px;
-    height: 100px;
-    background-color: rgba(255, 255, 255, 0.797);
-    border-radius: 10px;
-    margin-left: 15px;
-    
-    
- }
-
- .cart-item-button{
-    width: 30px;
-    height: 20px;
-    background-color: #5f5f5f;
-    border-radius: 15px;
-    color: #eee;
- } 
-
 

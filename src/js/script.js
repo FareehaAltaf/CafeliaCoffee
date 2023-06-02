@@ -74,8 +74,34 @@ var t = setTimeout("swipe()",3000);
 }
 swipe();
 
-const cartButton = document.querySelector('.fa-shopping-cart');
+// const cartButton = document.querySelector('.fa-shopping-cart');
 
-cartButton.addEventListener('click', function () {
-    cartButton.classList.toggle('is-active');
-});
+// cartButton.addEventListener('click', function () {
+//     cartButton.classList.toggle('is-active');
+// });
+
+const openBtn = document.getElementById('open-cart-btn');
+const cart = document.getElementById('shopping-cart');
+const closeBtn = document.getElementById('close-btn');
+const backdrop = document.querySelector('.backdrop');
+
+openBtn.addEventListener('click', openCart);
+closeBtn.addEventListener('click', closeCart);
+backdrop.addEventListener('click', closeCart);
+
+function openCart () {
+    cart.classList.add('open')
+    backdrop.style.display = 'block'
+    setTimeout(() => {
+        backdrop.classList.add('show')
+    }, 0);
+}
+
+function closeCart () {
+    cart.classList.remove('open')
+    backdrop.classList.remove('show')
+    
+    setTimeout(() => {
+        backdrop.style.display = 'none'
+    }, 500);
+}
