@@ -80,14 +80,54 @@ swipe();
 //     cartButton.classList.toggle('is-active');
 // });
 
+const ITEMS = [
+    {
+        id: 1,
+        name: 'Acai Bowl',
+        price: 5.50,
+        image: 'menu-8.jpg',
+        qty: 1
+    },
+    {
+        id: 2,
+        name: 'Sandwich Muncher',
+        price: 10.99,
+        image: 'dish-2.jpeg',
+        qty: 1
+    },
+    {
+        id: 3,
+        name: 'Pancake Lover',
+        price: 12.99,
+        image: 'dish-1.jpeg',
+        qty: 1
+    },
+    {
+        id: 4,
+        name: 'Waffle Baffle',
+        price: 12.99,
+        image: 'dish-3.png',
+        qty: 1
+    },
+]
+
 const openBtn = document.getElementById('open-cart-btn');
 const cart = document.getElementById('shopping-cart');
 const closeBtn = document.getElementById('close-btn');
 const backdrop = document.querySelector('.backdrop');
+const itemsEl = document.querySelector('.box-container');
+const cartItems = document.querySelector('.cart-items');
+const itemsNum = document.getElementById('items-num');
+const subtotalPrice = document.getElementById('subtotal-price');
+
+let cart_data = []
 
 openBtn.addEventListener('click', openCart);
 closeBtn.addEventListener('click', closeCart);
 backdrop.addEventListener('click', closeCart);
+
+renderItems();
+renderCartItems();
 
 function openCart () {
     cart.classList.add('open')
@@ -110,3 +150,112 @@ function closeCart () {
 // 1. get items from database
 // 2. create a div/img/price/name for each item tags using js
 // 3. add the classes (box / shoppingcart) for the styling.
+
+// Add Items to Cart
+function addItem(idx, itemId) {
+    // find same items
+    const foundItem = cart_data.find(
+        (item) => item.id.toString() === itemId.toString()
+    )
+    if (foundItem) {
+        increaseQty(itemId)
+    }else {
+        cart_data.push(ITEMS[idx])
+    }
+    updateCart()
+    openCart()
+}
+
+// Remove Cart Items
+function removeCartItem(itemId) {
+    cart_data = cart_data.filter((item) => item.id != itemId)
+    updateCart()
+}
+
+// Increase item qty
+function increaseQty(itemId) {
+    cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty + 1} : item)
+    updateCart()
+}
+
+// Decrease item qty
+function decreaseQty(itemId) {
+    cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty > 1 ? item.qty - 1 : item.qty} : item)
+    updateCart()
+}
+
+//  Calculate Items Number
+function calcItemsNum() {
+    let itemsCount = 0
+
+    cart_data.forEach(item => itemsCount += item.qty)
+
+    itemsNum.innerText = itemsCount
+}
+
+// Calculate Subtotal price
+function calcSubtotalPrice() {
+    let subtotal = 0
+
+    cart_data.forEach((item) => (subtotal += item.price*item.qty))
+
+    subtotalPrice.innerText = subtotal.toFixed(2)
+}
+
+
+// Render Items
+function renderItems() {
+    ITEMS.forEach((item, idx) => {
+        const itemEl = document.createElement('div')
+        itemEl.classList.add('box')
+        // const addToCartBtn = document.querySelector('div.box a.btn')
+        // addToCartBtn.addEventListener('click', () => addItem(idx))
+        // itemEl.onclick = () => addItem(idx)
+        itemEl.innerHTML = `
+            <img class="dish-img" src="images/${item.image}" alt="">
+            <h3>${item.name}</h3>
+            <span>$${item.price}</span>
+            <a class="btn" onclick="addItem(${idx},${item.id})" >add to cart</a>
+            `
+        itemsEl.appendChild(itemEl)
+
+    })
+}
+
+// Display / Render Cart Items
+function renderCartItems() {
+    // remove everything from cart
+    cartItems.innerHTML = ''
+    // add new data
+    cart_data.forEach(item => {
+        const cartItem = document.createElement('div')
+        cartItem.classList.add('cart-item')
+        cartItem.innerHTML = `
+        <div class="remove-item" onclick="removeCartItem(${item.id})">
+            <span>&times;</span>
+        </div>
+        <div class="item-img">
+            <img src="images/${item.image}" alt="">
+        </div>
+        <div class="item-details">
+            <p>${item.name}</p>
+            <strong>$${item.price}</strong>
+            <div class="qty">
+                <span onclick="decreaseQty(${item.id})">-</span>
+                <strong>${item.qty}</strong>
+                <span onclick="increaseQty(${item.id})">+</span>
+            </div>
+        </div>
+        `
+        cartItems.appendChild(cartItem)
+    })
+}
+
+function updateCart() {
+    //rerender cart items with updated data
+    renderCartItems()
+    // Update Items Number in cart
+    calcItemsNum()
+    // Update Subtotal Price
+    calcSubtotalPrice()
+}
