@@ -105,3 +105,8 @@ function closeCart () {
         backdrop.style.display = 'none'
     }, 500);
 }
+
+
+// 1. get items from database
+// 2. create a div/img/price/name for each item tags using js
+// 3. add the classes (box / shoppingcart) for the styling.
