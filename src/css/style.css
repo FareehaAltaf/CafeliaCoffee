@@ -962,6 +962,118 @@ placement & degin of the eye and heart hovering over our image */
     
 } */
 
+/* Login Page */
+/* 
+
+.logi.heading
+    background-color: red;
+    border-radius: 1rem;
+    width: 100%;
+    height: 70vh;
+} */
+
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top .login-heading {
+    text-align: center;
+    color:var(--black);
+    font-size: 5rem;
+    padding-bottom: 4rem;
+    text-transform: uppercase;
+    padding-top: 100px;
+}
+.top .login-heading span{
+    color:var(--brown);
+}
+
+.forms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+.forms .outer {
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    height: 60rem;
+    width: 50rem;
+    background-color: #ff81214f;
+    border-radius: 5%;
+    box-shadow: #00000023 0px 0px 10px 0px;
+    gap: 1px;
+    overflow: hidden;
+}
+.forms .outer .btns {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 65rem;
+    gap: 1.5px;
+}
+/* display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100%;
+width: 50%;
+background-color: #ff81214f;
+border-radius: 5%;
+box-shadow: #00000023 0px 0px 10px 0px;
+gap: 1px;
+overflow: hidden; */
+
+.forms .outer .btns .login-btn ,
+.forms .outer .btns .signup-btn {
+    background-color: #fff;
+    width: 49.25%;
+    height: 15%;
+    border-radius: 5%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+.forms .outer .btns .login-btn:hover ,
+.forms .outer .btns .signup-btn:hover {
+    background-color: #ffa25ca0;
+    color: #fff;
+    transition: 0.5s;
+}
+
+
+.forms .outer .line {
+    width: 0.75%;
+    height: 15%;
+    background-color: #000;
+    border-radius: 30%;
+}
+
+/*! AARGSDFNIDSWUBCDIJ */
+.forms .outer .login-form {
+    width: 2rem;
+    height: 2rem;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+
 .footer .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
