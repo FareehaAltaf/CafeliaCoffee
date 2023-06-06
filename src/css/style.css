@@ -999,7 +999,8 @@ placement & degin of the eye and heart hovering over our image */
 }
 
 .forms .outer {
-    /* display: flex; */
+    display: flex;
+    flex-direction: column;
     /* justify-content: center;
     align-items: center; */
     height: 60rem;
@@ -1014,7 +1015,7 @@ placement & degin of the eye and heart hovering over our image */
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 65rem;
+    height: 15%;
     gap: 1.5px;
 }
 /* display: flex;
@@ -1033,7 +1034,7 @@ overflow: hidden; */
 .forms .outer .btns .signup-btn {
     background-color: #fff;
     width: 49.25%;
-    height: 15%;
+    height: 100%;
     border-radius: 5%;
     display: flex;
     text-align: center;
@@ -1055,16 +1056,15 @@ overflow: hidden; */
 
 .forms .outer .line {
     width: 0.75%;
-    height: 15%;
+    height: 100%;
     background-color: #000;
     border-radius: 30%;
 }
 
 /*! AARGSDFNIDSWUBCDIJ */
 .forms .outer .login-form {
-    width: 2rem;
-    height: 2rem;
-    background-color: red;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
