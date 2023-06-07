@@ -259,3 +259,10 @@ function updateCart() {
     // Update Subtotal Price
     calcSubtotalPrice()
 }
+
+
+const loginBtns = document.querySelector('.login-btn');
+// toggle not working
+function selectButton() {
+    loginBtns.classList.toggle('selected');
+}

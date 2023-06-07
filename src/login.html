@@ -64,20 +64,20 @@
 <section class="forms">
     <div class="outer">
         <div class="btns">
-            <div class="login-btn">Login</div>
+            <div class="login-btn selected" onclick="selectButton()">Login</div>
             <div class="line"></div>
-            <div class="signup-btn">SignUp</div>
+            <div class="signup-btn" onclick="selectButton()">SignUp</div>
         </div>
 
         <div class="login-form">
             <form action="login.php" method="post">
-                <div class="input-box">
-                    <input type="text" name="username" placeholder="Username" required>
+                <div class="email-login">
+                    <input type="email" name="email" placeholder="Email" required>
                 </div>
-                <div class="input-box">
+                <div class="pswd-login">
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
-                <div class="input-box">
+                <div class="btn-login">
                     <input type="submit" name="login" value="Login">
                 </div>
             </form>
