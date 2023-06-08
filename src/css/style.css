@@ -1124,6 +1124,213 @@ overflow: hidden; */
     transition: 0.5s;
 }
 
+/* Checkout page */
+
+.checkout .outer {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    min-height: 60rem;
+    width: 150rem;
+    background-color: #ff81214f;
+    border-radius: 25px;
+    box-shadow: #00000023 0px 0px 10px 0px;
+    gap: 2rem;
+    padding-bottom: 5%;
+    /* overflow: hidden; */
+}
+
+/* .checkout .outer .btns {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 15%;
+    gap: 1.5px;
+} */
+
+.checkout .outer .item {
+    background-color: #ffffffb7;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 20%;
+    border-radius: 30px;
+}
+
+.checkout .outer .heading-text {
+    text-align: center;
+    color:var(--black);
+    font-size: 3rem;
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+    text-transform: uppercase;
+    /* margin-top: 20px; */
+    /* background-color: #fff; */
+}
+
+.checkout-item-img {
+    margin-left: 1.5%;
+    margin-top: 0.6%;
+    border-radius: 25px;
+    width: 11%;
+}
+.checkout-item-img img {
+    border-radius: 25px;
+    width: 100%;
+}
+
+
+.checkout-item-details {
+    padding-top: 4.5rem;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    font-size: 17px;
+    width: 89%;
+    gap: 40rem;
+}
+
+.checkout-item-details p {
+    color: #c58532;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.checkout-item-details .qty {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 5%;
+}
+
+.checkout-item-details .qty span {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1), -px -1px 2px rgba(0, 0, 0, 0.1);
+    user-select: none;
+    transition: scale 0.2s ease;
+    /* Side Bar Video: https://www.youtube.com/watch?v=_nnqP94Tu9g */
+}
+
+.checkout-item-details .qty span:hover {
+    background-color: #ffa82e;
+    color: #fff;
+    scale: 1.1;
+}
+
+.checkout-item-details .qty span:active {
+    scale: 1;
+}
+
+/* .qty span:first-of-type{
+    font-size: 3rem;
+    padding-bottom: 2px;
+} */
+
+.item .remove-item {
+    position: relative;
+    top: 10px;
+    right: -97%;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.item .remove-item span {
+    color: #fff;
+    font-size: 20px;
+    user-select: none;
+    padding-bottom: 2px;
+}
+
+.final {
+    width: 100%;
+    /* font-size: 20px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 800;
+    color: #000;
+    gap: 40%;
+}
+
+.final div p {
+    color: #c58532;
+}
+
+.final .subtotal {
+    width: fit-content;
+    background-color: #ffffffb7;
+    display: flex;
+    gap: 9rem;
+    padding: 2rem 2rem;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+.final .total {
+    width: fit-content;
+    background-color: #ffffffb7;
+    display: flex;
+    gap: 15.3rem;
+    padding: 2rem 2rem;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.final .order-btn {
+    width: 30rem;
+    background-color: #ffffffb7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+    transition: scale 0.2s ease;
+}
+
+.final .order-btn a {
+    width: 30rem;
+    background-color: #ffffffb7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+    transition: scale 0.2s ease;
+    color: #000;
+}
+
+.final .order-btn a {
+    color: #000;
+}
+
+.final .order-btn a:hover {
+    background-color: #ffa82e;
+    color: #fff;
+    scale: 1.1;
+}
 
 
 .footer .box-container{
