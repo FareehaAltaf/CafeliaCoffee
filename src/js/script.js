@@ -261,8 +261,26 @@ function updateCart() {
 }
 
 
-const loginBtns = document.querySelector('.login-btn');
-// toggle not working
-function selectButton() {
-    loginBtns.classList.toggle('selected');
-}
+// const loginBtns = document.querySelector('.login-btn');
+// loginBtns.addEventListener('click', selectButton);
+
+// function selectButton() {
+//     loginBtns.classList.toggle('selected');
+// }
+
+// toggle the color of the buttons based on if they are selected
+
+const loginBtn = document.getElementById('login-btn');
+const signupBtn = document.getElementById('signup-btn');
+
+loginBtn.addEventListener('click', () => {
+    loginBtn.classList.add('active');
+    // signupBtn.classList.remove('active');
+    console.log('login');
+});
+
+signupBtn.addEventListener('click', () => {
+    signupBtn.classList.add('active');
+    // loginBtn.classList.remove('active');
+    console.log('signup');
+});

@@ -1030,8 +1030,7 @@ box-shadow: #00000023 0px 0px 10px 0px;
 gap: 1px;
 overflow: hidden; */
 
-.forms .outer .btns .login-btn ,
-.forms .outer .btns .signup-btn {
+.forms .outer .btns a {
     background-color: #fff;
     width: 49.25%;
     height: 100%;
@@ -1043,19 +1042,21 @@ overflow: hidden; */
     font-size: 2.5rem;
     font-weight: 600;
     cursor: pointer;
+    user-select: none;
+    /* remove the blue thing from the link */
+    color: #000;
     
 }
-.forms .outer .btns .selected {
+.forms .outer .btns a:active {
     background-color: #0000009c;
     color: #fff;
 }
-
-.forms .outer .btns .login-btn:hover ,
-.forms .outer .btns .signup-btn:hover {
+/* 
+.forms .outer .btns a:hover {
     background-color: #ffa25ca0;
     color: #fff;
     transition: 0.5s;
-}
+} */
 
 
 .forms .outer .line {
