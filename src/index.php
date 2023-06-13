@@ -650,7 +650,7 @@
                 <p>SUBTOTAL:</p>
                 <p>$<span id="subtotal-price">0</span></p>
             </div>
-            <button onclick="location.href = './checkout.html'">Checkout</button>
+            <button onclick="location.href = './checkout.php'">Checkout</button>
             <!-- <button>Checkout</button> -->
         </div>
     </div>

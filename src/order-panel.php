@@ -15,15 +15,56 @@
     <!-- css file link  -->
     <link rel="stylesheet" href="css/style.css">
 
+    <?php
+        include 'connection.php';
+        // fetch OrderID and items from the order and orderdetails tables and display them using php
+
+        // $sql = "SELECT * FROM orderdetails WHERE OrderID = $OrderID";
+        // $result = mysqli_query($conn, $sql);
+
+        // what we need:
+
+        //? These happen alot of times per order
+        
+        // orderdetails.itemID
+        // menu.itemName
+        // orderdetails.quantity
+        
+        //? These happen once per order
+        // orders.orderID
+        // orders.orderTime
+
+        // what is the sql statement for this?
+        // SELECT orderdetails.itemID, menu.itemName, orderdetails.quantity, orders.orderID, orders.orderTime 
+        // FROM orderdetails 
+        // INNER JOIN menu ON orderdetails.itemID = menu.itemID 
+        // INNER JOIN orders ON orderdetails.orderID = orders.orderID 
+        // WHERE orders.orderID = $OrderID
+
+    
+    
+    ?>
+
 
 </head>
 <body>
+<!-- Before we start here are impt HTML elements we'll use:
+    The <section> element can be used to define a part of a website with related content.
+
+    The <article> element can be used to define an individual piece of content.
+    
+    The <header> element can be used to define a header (in a document, a section, or an article).
+    
+    The <footer> element can be used to define a footer (in a document, a section, or an article).
+    
+    The <nav> element can be used to define a container of navigation links. -->
+<!-- header section starts-->
 
 <header>
 
     <a href="" class="logo"><i class="fas fa-utensils">Cafelia</i></a>
 
-    <h1>Order Reception - Cafelia</h1>
+    <h1>Admin Panel - Cafelia</h1>
 
 </header>
 

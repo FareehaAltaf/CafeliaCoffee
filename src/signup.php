@@ -66,28 +66,57 @@
         </div> -->
 
         <div class="signup-box">
-            <form>
+            <form method="POST" action="
+                <?php
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+                        
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "Cafelia";
+                        $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
+                        
+                        
+                        $name = $_POST['name'];
+                        $email = $_POST['email'];
+                        $password = $_POST['password'];
+                        $ph_no = $_POST['ph_no'];
+                        $address = $x['address'];
+                        
+                        $sql = "INSERT INTO customers (name, ph_no, address, email, password) VALUES ('$name', '$ph_no', '$address', '$email', '$password')";
+                        // ask miss that the data isnt entering the database
+                        $query = mysqli_query($conn, $sql);
+                        
+                        if ($query) {
+                            echo "New record created successfully";
+                        } else {
+                            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                        }
 
-                <input type="text" placeholder="First Name" required/>
+                    }
+                ?>             
+            ">
 
-                <input type="text" placeholder="Last Name" required/>
+                <input type="text" placeholder="Name" name="name" required/>
 
-                <input type="email" placeholder="Email" required/>
+                <!-- <input type="text" placeholder="Last Name" required/> -->
 
-                <input type="password" placeholder="Password" required/>
+                <input type="email" placeholder="Email" name="email" required/>
 
-                <input type="number" placeholder="Phone No." required/>
+                <input type="password" placeholder="Password" name="password" required/>
+
+                <input type="number" placeholder="Phone No." name="ph_no" required/>
                 
-                <input type="text" placeholder="Address" />
+                <input type="text" placeholder="Address" name="address" required />
 
-                <input type="button" value="Sign Up" />
+                <input type="submit" value="Sign Up" name="submit"/>
             </form>
             <p>
               By clicking the Sign Up button,you agree to our Terms and Conditions and Policy Privacy
             </p>
         </div>
         <p class="para-2">
-            Already have an account? <a href="login.html">Login here</a>
+            Already have an account? <a href="./login.php">Login here</a>
         </p>
     </div>
 </section>

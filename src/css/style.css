@@ -988,6 +988,43 @@ placement & degin of the eye and heart hovering over our image */
 .top .login-heading span{
     color:var(--brown);
 }
+/* Back button for admin panel */
+
+
+.back-btn {
+    /* background-color: red; */
+    width: 15rem;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 18%;
+    top: 18%;
+}
+
+.back-btn a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #ff8121ad;
+}
+
+.back-btn a:hover {
+    background-color: #fff;
+    color: #000;
+    scale: 1.1;
+}
+
+
+
 /* Internet Form */
 .signup-box {
     padding-top: 2rem;
@@ -1041,7 +1078,7 @@ placement & degin of the eye and heart hovering over our image */
     outline: none; */
   }
 
-.signup-box form input[type="button"] {
+.signup-box form input[type="submit"] {
     /* width: 80%;
     height: 10%;
     margin-top: 20px;
@@ -1059,7 +1096,7 @@ placement & degin of the eye and heart hovering over our image */
     overflow: hidden;
     margin-bottom: 2rem;
 }
-.signup-box form input[type="button"]:hover {
+.signup-box form input[type="submit"]:hover {
     background-color: #ffa25ca0;
     color: #fff;
     transition: 0.5s;
@@ -1500,6 +1537,52 @@ input {
 
 /* Admin Panel */
 
+.choose {
+    background-color: rgba(255, 255, 255, 0.594);
+    height: 50rem;
+    width: 45rem;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: var(--light-color) solid 12px;
+}
+
+.choose div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+    width: 100%;
+    height: 100%;
+}
+
+.choose div a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-radius: 25px; */
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+    color: #000;
+    background-color: #fff;
+}
+.choose div a:hover {
+    background-color: #ff990053;
+    color: #fff;
+    scale: 1.1;
+}
+
+
+
+
+/* Other stuff after admin panel */
 .info {
     display: flex;
     align-items: center;
@@ -1576,11 +1659,11 @@ input {
 .info .outer .item .LastName {
     margin-right: 3rem;
 }
-.info .outer .item .jobID {
-    margin-right: 2rem;
-}
 .info .outer .item .jobTitle {
-    margin-right: 10rem;
+    margin-right: 4rem;
+}
+.info .outer .item .BirthDate {
+    margin-right: 7rem;
 }
 
 .info .outer .item .edit {
@@ -1617,7 +1700,6 @@ input {
     font-size: medium;
     font-weight: 800;
 }
-/* employee-box ko edit karna */
 
 .info .outer .employee-box {
     background-color: rgba(255, 255, 255, 0.594);
