@@ -1273,6 +1273,7 @@ input {
     /* background-color: #fff; */
 }
 
+/*! There is no img here */
 .checkout-item-img {
     margin-left: 1.5%;
     margin-top: 0.6%;
@@ -1436,7 +1437,7 @@ input {
     scale: 1.1;
 }
 
-/* Admin Panel */
+/* Order Panel */
 
 
 .order-details {
@@ -1474,7 +1475,7 @@ input {
 }
 
 .completed {
-    /* background-color: blue; */
+    /* background-color:purple; */
     display: flex;
     width: 50%;
     font-size: 4rem;
@@ -1497,6 +1498,229 @@ input {
     scale: 1.1;
 }
 
+/* Admin Panel */
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info .outer {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    min-height: 60rem;
+    width: 150rem;
+    background-color: #ff81214f;
+    border-radius: 25px;
+    box-shadow: #00000023 0px 0px 10px 0px;
+    gap: 2rem;
+    padding-bottom: 5%;
+    /* overflow: hidden; */
+}
+
+.info .outer .item {
+    background-color: #ffffffb7;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 20%;
+    border-radius: 30px;
+    /* padding-left: 5rem; */
+    /* gap: 6rem; */
+}
+
+.info .outer .heading-text {
+    text-align: center;
+    color:var(--black);
+    font-size: 3rem;
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+    text-transform: uppercase;
+    /* margin-top: 20px; */
+    /* background-color: #fff; */
+}
+
+.info .outer .item-heading {
+    width: 60%;
+    margin-right: 30rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10rem;
+    font-size: large;
+    /* background-color: #fff; */
+}
+
+.info .outer .item .emp-details {
+    width: 16rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    /* background-color: #fff; */
+}
+.info .outer .item .employeeID {
+    margin-left: 0rem;
+    margin-right: 2rem;
+}
+.info .outer .item .FirstName {
+    margin-right: 4rem;
+}
+.info .outer .item .LastName {
+    margin-right: 3rem;
+}
+.info .outer .item .jobID {
+    margin-right: 2rem;
+}
+.info .outer .item .jobTitle {
+    margin-right: 10rem;
+}
+
+.info .outer .item .edit {
+    /* background-color:purple; */
+    display: flex;
+    width: 20%;
+    font-size: 4rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.info .outer .item .edit span {
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #000;
+    user-select: none;
+    background-color: #fff;
+    margin-right: -12rem;
+}
+
+.info .outer .item .edit span:hover {
+    background-color: #ffa82e;
+    color: #fff;
+    scale: 1.1;
+}
+
+.info .outer .item .edit span p {
+    font-size: medium;
+    font-weight: 800;
+}
+/* employee-box ko edit karna */
+
+.info .outer .employee-box {
+    background-color: rgba(255, 255, 255, 0.594);
+    height: 50rem;
+    width: 45rem;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info .outer .employee-box form {
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info .outer .employee-box form input::placeholder{
+    color: #00000093;
+    font-weight: 900;
+    padding-left: 2rem;
+}
+.info .outer .employee-box form input{
+    background-color: #ff990053;
+    width: 80%;
+    height: 10%;   
+    padding-left: 2rem;
+    color: #000;
+    font-weight: 900;
+}
+.info .outer .employee-box form input:invalid{
+    border-style: solid;
+    border-color: red;
+}
+
+.info .outer .employee-box form input[type ="submit"] {
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+}
+.info .outer .employee-box form input[type ="submit"]:hover {
+    background-color: #ffa82e;
+    color: #fff;
+    scale: 1.1;
+}
+
+
+.info .outer .employee-box form .job-box {
+    background-color: #ff990053;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 900;
+    color: #00000093;
+    gap: 1rem;
+}
+.job-box label {
+    padding-left: 5rem;
+}
+.job-box select {
+    width: 30rem;
+    height: 100%;
+    background-color: transparent;
+    color: #000;
+    font-weight: 900;
+    font-size: 15px;
+}
+/* more editing */
+.bday-box {
+    background-color: #ff990053;
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 900;
+    color: #00000093;
+}
+.bday-box label {
+    padding-left: 1rem;
+}
+.bday-box input {
+    width: 50rem;
+    height: 100%;
+    color: #000;
+    font-weight: 900;
+    font-size: 15px;
+    gap: 5rem;
+}
 
 
 .footer .box-container{

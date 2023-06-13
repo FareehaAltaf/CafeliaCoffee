@@ -18,17 +18,6 @@
 
 </head>
 <body>
-<!-- Before we start here are impt HTML elements we'll use:
-    The <section> element can be used to define a part of a website with related content.
-
-    The <article> element can be used to define an individual piece of content.
-    
-    The <header> element can be used to define a header (in a document, a section, or an article).
-    
-    The <footer> element can be used to define a footer (in a document, a section, or an article).
-    
-    The <nav> element can be used to define a container of navigation links. -->
-<!-- header section starts-->
 
 <header>
 
@@ -40,100 +29,124 @@
 
 <section class="top">
     <div class="login-heading">
-        <h2><span>Orders</span></h2>
+        <h2><span>Admin Panel</span></h2>
     </div>
 </section>
 
-<section class="checkout">
+<section class="choose">
+    <!-- 
+        1. Add a new Employee √
+        2. View all Employees  √
+        3. View current Orders
+        4. View all Customers
+        5. View all Items in Menu
+        6. Remove Employee √
+        7. Edit Employee Job (optional)
+     -->
+
+</section>
+
+<section class="info">
     <div class="outer">
-        <div class="heading-text">
-            Orders to be completed
-        </div>
+        <!-- Show All Employees , Remove Employee , Edit Employee Job (TBD) -->
+            <div class="heading-text">
+                Current Employees
+            </div>
 
-        <!-- Ek Item -->
-        <div class="item">
+            <div class="item-heading">
+                <p>ID</p>
+                <p>First Name</p>
+                <p>Last Name</p>
+                <p>Job ID</p>
+                <p>Job Title</p>
+            </div>
 
-            <div class="order-details">
-                <p>
-                    Order ID: $ID <br>
-                    Item 1 Name: Qty1 <br>
-                    Item 2 Name: Qty2 <br>
-                    Item 3 Name: Qty3
-                </p>
-            </div>
-            <div class="customer-details">
-                <p>Customer Name</p>
-            </div>
-            <div class="completed">
-                <span>
-                    <i class='bx bxs-check-square' ></i>
-                </span>
-            </div>
-        </div>
+            
+            <div class="item">
 
-        <!-- Ek Item -->
-        <div class="item">
+                <div class="employeeID emp-details">ID</div>
+                <div class="FirstName emp-details">First Name</div>
+                <div class="LastName emp-details">Last Name</div>
+                <div class="jobID emp-details">jobID</div>
+                <div class="jobTitle emp-details">jobTitle</div>
+                <div class="edit">
+                    <span>
+                        <p>Fire Employee</p>
+                    </span>
+                </div>
+            </div>
+            
+            
+            <div class="item">
 
-            <div class="order-details">
-                <p>
-                    Order ID: $ID <br>
-                    Item 1 Name: Qty1 <br>
-                    Item 2 Name: Qty2 <br>
-                    Item 3 Name: Qty3
-                </p>
+                <div class="employeeID emp-details">ID</div>
+                <div class="FirstName emp-details">First Name</div>
+                <div class="LastName emp-details">Last Name</div>
+                <div class="jobID emp-details">jobID</div>
+                <div class="jobTitle emp-details">jobTitle</div>
+                <div class="edit">
+                    <span>
+                        <p>Fire Employee</p>
+                    </span>
+                </div>
             </div>
-            <div class="customer-details">
-                <p>Customer Name</p>
-            </div>
-            <div class="completed">
-                <span>
-                    <i class='bx bxs-check-square' ></i>
-                </span>
-            </div>
-        </div>
 
-        <!-- Ek Item -->
-        <div class="item">
 
-            <div class="order-details">
-                <p>
-                    Order ID: $ID <br>
-                    Item 1 Name: Qty1 <br>
-                    Item 2 Name: Qty2 <br>
-                    Item 3 Name: Qty3
-                </p>
-            </div>
-            <div class="customer-details">
-                <p>Customer Name</p>
-            </div>
-            <div class="completed">
-                <span>
-                    <i class='bx bxs-check-square' ></i>
-                </span>
-            </div>
-        </div>
+            <div class="item">
 
-        <!-- Ek Item -->
-        <div class="item">
+                <div class="employeeID emp-details">ID</div>
+                <div class="FirstName emp-details">First Name</div>
+                <div class="LastName emp-details">Last Name</div>
+                <div class="jobID emp-details">jobID</div>
+                <div class="jobTitle emp-details">jobTitle</div>
+                <div class="edit">
+                    <span>
+                        <p>Fire Employee</p>
+                    </span>
+                </div>
+            </div>
 
-            <div class="order-details">
-                <p>
-                    Order ID: $ID <br>
-                    Item 1 Name: Qty1 <br>
-                    Item 2 Name: Qty2 <br>
-                    Item 3 Name: Qty3
-                </p>
-            </div>
-            <div class="customer-details">
-                <p>Customer Name</p>
-            </div>
-            <div class="completed">
-                <span>
-                    <i class='bx bxs-check-square' ></i>
-                </span>
-            </div>
-        </div>
 
+            <div class="item">
+
+                <div class="employeeID emp-details">ID</div>
+                <div class="FirstName emp-details">First Name</div>
+                <div class="LastName emp-details">Last Name</div>
+                <div class="jobID emp-details">jobID</div>
+                <div class="jobTitle emp-details">jobTitle</div>
+                <div class="edit">
+                    <span>
+                        <p>Fire Employee</p>
+                    </span>
+                </div>
+            </div>
+
+            <!-- <div class="heading-text">
+                Add a new employee
+            </div>
+            
+            <div class="employee-box">
+                <form action="">
+                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Last Name">
+                    <div class="job-box">
+                        <label for="jobID-select">Job:</label>
+                        <select class="jobID-select">
+                            <option value="1">Barista</option>
+                            <option value="2">Manager</option>
+                            <option value="3">others</option>
+                        </select>
+                    </div>
+                    <div class="bday-box">
+                        <label>Birth Date:</label>
+                        <span><input type="date" style="background-color: transparent;"></span>
+                    </div>
+                    <input type="text" placeholder="CNIC" title="13 digit long cnic" pattern="[0-9]{13}">
+                    <input type="submit" value="ADD EMPLOYEE">
+                </form>
+
+            </div> -->
+            
 
 
     </div>
