@@ -61,119 +61,139 @@
     </div>
 </section>
 
+<!-- 
+
+Remaking the whole thing:
+
+1. Use php while loop to render the items
+2. Use php to store items in a array called "cart"
+3. use this array in the displaying of cart items in cart
+4. use php to calculate the total price of the cart
+5. use php to calculate the total number of items in the cart
+6. use php to transfer the cart to the checkout page
+7. use php while loop to display items in the checkout page
+8. use php to calculate the total price of the cart in the checkout page // or use the same variable
+9. use php on click of order button submit, to create an order and update the table
+
+
+ -->
+
 <section class="checkout">
     <div class="outer">
         <div class="heading-text">
             <h3>Your Items</h3>
         </div>
-        <!-- Ek Item -->
-        <div class="item">
-            <div class="remove-item">
-                <span>&times;</span>
-            </div>
-            <div class="checkout-item-img"> 
-                <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-            </div>
-            <div class="checkout-item-details">
-                <p>Item Name</p>
-                <strong>$Price</strong>
-                <div class="qty">
-                    <span>-</span>
-                    <strong>qty</strong>
-                    <span >+</span>
+        <div class="items-list"> </div>
+
+        <!-- <div class="item">
+                <div class="remove-item">
+                    <span>&times;</span>
+                </div>
+                <div class="checkout-item-img"> 
+                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
+                </div>
+                <div class="checkout-item-details">
+                    <p>Item Name</p>
+                    <strong>$Price</strong>
+                    <div class="qty">
+                        <span>-</span>
+                        <strong>qty</strong>
+                        <span >+</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Ek Item -->
-        <div class="item">
-            <div class="remove-item">
-                <span>&times;</span>
-            </div>
-            <div class="checkout-item-img"> 
-                <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-            </div>
-            <div class="checkout-item-details">
-                <p>Item Name</p>
-                <strong>$Price</strong>
-                <div class="qty">
-                    <span>-</span>
-                    <strong>qty</strong>
-                    <span >+</span>
+
+
+            <div class="item">
+                <div class="remove-item">
+                    <span>&times;</span>
+                </div>
+                <div class="checkout-item-img"> 
+                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
+                </div>
+                <div class="checkout-item-details">
+                    <p>Item Name</p>
+                    <strong>$Price</strong>
+                    <div class="qty">
+                        <span>-</span>
+                        <strong>qty</strong>
+                        <span >+</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Ek Item -->
-        <div class="item">
-            <div class="remove-item">
-                <span>&times;</span>
-            </div>
-            <div class="checkout-item-img"> 
-                <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-            </div>
-            <div class="checkout-item-details">
-                <p>Item Name</p>
-                <strong>$Price</strong>
-                <div class="qty">
-                    <span>-</span>
-                    <strong>qty</strong>
-                    <span >+</span>
+
+            <div class="item">
+                <div class="remove-item">
+                    <span>&times;</span>
+                </div>
+                <div class="checkout-item-img"> 
+                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
+                </div>
+                <div class="checkout-item-details">
+                    <p>Item Name</p>
+                    <strong>$Price</strong>
+                    <div class="qty">
+                        <span>-</span>
+                        <strong>qty</strong>
+                        <span >+</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Ek Item -->
-        <div class="item">
-            <div class="remove-item">
-                <span>&times;</span>
-            </div>
-            <div class="checkout-item-img"> 
-                <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-            </div>
-            <div class="checkout-item-details">
-                <p>Item Name</p>
-                <strong>$Price</strong>
-                <div class="qty">
-                    <span>-</span>
-                    <strong>qty</strong>
-                    <span >+</span>
+
+            <div class="item">
+                <div class="remove-item">
+                    <span>&times;</span>
+                </div>
+                <div class="checkout-item-img"> 
+                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
+                </div>
+                <div class="checkout-item-details">
+                    <p>Item Name</p>
+                    <strong>$Price</strong>
+                    <div class="qty">
+                        <span>-</span>
+                        <strong>qty</strong>
+                        <span >+</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Ek Item -->
-        <div class="item">
-            <div class="remove-item">
-                <span>&times;</span>
-            </div>
-            <div class="checkout-item-img"> 
-                <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-            </div>
-            <div class="checkout-item-details">
-                <p>Item Name</p>
-                <strong>$Price</strong>
-                <div class="qty">
-                    <span>-</span>
-                    <strong>qty</strong>
-                    <span >+</span>
+
+            <div class="item">
+                <div class="remove-item">
+                    <span>&times;</span>
+                </div>
+                <div class="checkout-item-img"> 
+                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
+                </div>
+                <div class="checkout-item-details">
+                    <p>Item Name</p>
+                    <strong>$Price</strong>
+                    <div class="qty">
+                        <span>-</span>
+                        <strong>qty</strong>
+                        <span >+</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Ek Item -->
-        <div class="item">
-            <div class="remove-item">
-                <span>&times;</span>
-            </div>
-            <div class="checkout-item-img"> 
-                <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-            </div>
-            <div class="checkout-item-details">
-                <p>Item Name</p>
-                <strong>$Price</strong>
-                <div class="qty">
-                    <span>-</span>
-                    <strong>qty</strong>
-                    <span >+</span>
+
+            <div class="item">
+                <div class="remove-item">
+                    <span>&times;</span>
                 </div>
-            </div>
-        </div>
+                <div class="checkout-item-img"> 
+                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
+                </div>
+                <div class="checkout-item-details">
+                    <p>Item Name</p>
+                    <strong>$Price</strong>
+                    <div class="qty">
+                        <span>-</span>
+                        <strong>qty</strong>
+                        <span >+</span>
+                    </div>
+                </div>
+            </div> -->
+        
 
 
         <!-- Subtotal and Total -->
@@ -185,13 +205,13 @@
             </div>
 
             <div class="totals">
-                <div class="subtotal">
+                <!-- <div class="subtotal">
                     <p>Subtotal</p>
                     <strong>$ Price</strong>
-                </div>
+                </div> -->
                 <div class="total">
                     <p>Total</p>
-                    <strong>$ Price</strong>
+                    <strong>$ <span class="total-price">00.00</span></strong>
                 </div>
             </div>
 

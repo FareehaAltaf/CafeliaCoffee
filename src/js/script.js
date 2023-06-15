@@ -121,6 +121,10 @@ const cartItems = document.querySelector('.cart-items');
 const itemsNum = document.getElementById('items-num');
 const subtotalPrice = document.getElementById('subtotal-price');
 
+const itemsList = document.querySelector('.items-list');
+const totalPrice = document.querySelector('.total-price');
+
+
 let cart_data = []
 
 openBtn.addEventListener('click', openCart);
@@ -129,6 +133,7 @@ backdrop.addEventListener('click', closeCart);
 
 renderItems();
 renderCartItems();
+renderCheckoutItems();
 
 function openCart () {
     cart.classList.add('open')
@@ -163,26 +168,29 @@ function addItem(idx, itemId) {
     }else {
         cart_data.push(ITEMS[idx])
     }
-    updateCart()
-    openCart()
+    updateCart();
+    openCart();
 }
 
 // Remove Cart Items
 function removeCartItem(itemId) {
     cart_data = cart_data.filter((item) => item.id != itemId)
     updateCart()
+    updateCheckout()
 }
 
 // Increase item qty
 function increaseQty(itemId) {
     cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty + 1} : item)
     updateCart()
+    updateCheckout()
 }
 
 // Decrease item qty
 function decreaseQty(itemId) {
     cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty > 1 ? item.qty - 1 : item.qty} : item)
     updateCart()
+    updateCheckout()
 }
 
 //  Calculate Items Number
@@ -201,10 +209,11 @@ function calcSubtotalPrice() {
     cart_data.forEach((item) => (subtotal += item.price*item.qty))
 
     subtotalPrice.innerText = subtotal.toFixed(2)
+    totalPrice.innerText = subtotal.toFixed(2)
 }
 
 
-// Render Items
+// Render Items //! Have a look at this
 function renderItems() {
     ITEMS.forEach((item, idx) => {
         const itemEl = document.createElement('div')
@@ -285,3 +294,50 @@ signupBtn.addEventListener('click', () => {
     // loginBtn.classList.remove('active');
     console.log('signup');
 });
+
+
+// Display Cart Items in checkout page
+function renderCheckoutItems() {
+    // remove everything from cart
+    itemsList.innerHTML = ''
+    // add new data
+    cart_data.forEach(item => {
+        const itemsListEl = document.createElement('div')
+        itemsListEl.classList.add('item')
+        itemsListEl.innerHTML = `
+                <div class="remove-item" onclick="removeCartItem(${item.id})">
+                    <span>&times;</span>
+                </div>
+                <div class="checkout-item-img"> 
+                    <img src="images/${item.image}" style="width: 100%;" alt="">
+                </div>
+                <div class="checkout-item-details">
+                    <p>${item.name}</p>
+                    <strong>$${item.price}</strong>
+                    <div class="qty">
+                        <span onclick="decreaseQty(${item.id})">-</span>
+                        <strong>${item.qty}</strong>
+                        <span onclick="increaseQty(${item.id})">+</span>
+                    </div>
+                </div>
+        `
+        itemsList.appendChild(itemsListEl)
+    })
+}
+
+function updateCheckout() {
+    //rerender cart items with updated data
+    renderCheckoutItems()
+    // Update Items Number in cart
+    calcItemsNum()
+    // Update Subtotal Price
+    calcSubtotalPrice()
+    console.log('updateCheckout');
+    console.log(cart_data);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    console.log('DOM fully loaded and parsed');
+    renderCheckoutItems();
+    console.log(cart_data);
+  });

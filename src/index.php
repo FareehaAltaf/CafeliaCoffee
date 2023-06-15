@@ -114,7 +114,16 @@
 </section>
 
 <!-- home section ends -->
+<!-- 
 
+
+1. Use php while loop to render the items
+2. Use php to store items in a array called "cart"
+3. use this array in the displaying of cart items in cart
+4. use php to calculate the total price of the cart
+5. use php to calculate the total number of items in the cart
+
+ -->
 <!-- dishes section starts  -->
 
 <section class="dishes" id="dishes">
