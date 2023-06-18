@@ -15,6 +15,20 @@
     <!-- css file link  -->
     <link rel="stylesheet" href="css/style.css">
 
+     
+    
+    <!-- // when the user logs in, authenticate from the customers table
+
+    // if the user is not logged in, redirect to login.php
+
+    // if the user is logged in, show the admin panel -->
+
+
+    
+    
+    
+    
+
 
 </head>
 <body>
@@ -66,24 +80,28 @@
         </div> -->
 
         <div class="signup-box">
-            <form>
+            
+            <form method="POST" action="login-process.php">
 
-                <input type="email" placeholder="Email" required/>
+                <input type="email" placeholder="Email" name="email" required/>
 
-                <input type="password" placeholder="Password" required/>
+                <input type="password" placeholder="Password" name="password" required/>
 
-                <input type="button" value="Log In" />
+                <input type="submit" value="Log In" name="login"/>
+
+                
+                
             </form>
         </div>
         <p class="para-2">
-            Don't have an account? <a href="signup.html">Sign up here</a>
+            Don't have an account? <a href="signup.php">Sign up here</a>
         </p>
     </div>
 </section>
 
 <section class="bottom"></section>
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+<!-- <script src="js/script.js"></script> -->
 
 
 </body>

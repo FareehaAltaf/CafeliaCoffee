@@ -15,6 +15,35 @@
     <!-- css file link  -->
     <link rel="stylesheet" href="css/style.css">
 
+    <?php 
+    
+        // include functions.php file here
+        // include('functions.php');
+
+        // // if user is not logged in, they cannot access this page
+        // if (!isset($_SESSION['username'])) {
+        //     $_SESSION['msg'] = "You must log in first";
+        //     header('location: login.php');
+        // }
+
+        // // logout user
+        // if (isset($_GET['logout'])) {
+        //     session_destroy();
+        //     unset($_SESSION['username']);
+        //     header("location: login.php");
+        // }
+        // function getCartItems() {
+        //     include 'connection.php';
+        //     $query = "SELECT itemID, itemName, price, image FROM menu WHERE itemID IN (1,2,3)";
+        //     $cart_result = mysqli_query($conn, $query);
+        //     return $cart_result;
+        // }
+    
+    
+    
+    
+    ?>
+
 
 </head>
 <body>
@@ -52,6 +81,13 @@
         <button id="open-cart-btn"><i class='bx bx-cart' style="font-size: 15px;"></i></button>
         <!-- <button class="hamburger"><i class='bx bx-x'></i></button> -->
     </div>
+
+    <?php 
+    include 'connection.php';
+    $sql = "SELECT itemID, itemName, image, price, description FROM menu ORDER BY itemID";
+    $result = mysqli_query($conn, $sql);    
+    
+    ?>
 
 </header>
 
@@ -126,192 +162,17 @@
  -->
 <!-- dishes section starts  -->
 
-<section class="dishes" id="dishes">
+<!-- <section class="dishes" id="dishes">
 
     <h3 class="sub-heading"> Try Our most popular !</h3>
     <h1 class="heading"> popular dishes </h1>
 
     <div class="box-container">
-        <!-- Commented for testing -->
-        <!--
-        <div class="box">
-            <img class="dish-img" src="images/dish-1.jpeg" alt="">
-            <h3>Pancake Lover</h3>
-            <span>$12.99</span>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-        
-        <div class="box">
-            <img class="dish-img" src="images/dish-2.jpeg" alt="">
-            <h3>Sandwich Muncher</h3>
-            <span>$10.99</span>
-            <a href="#" class="btn">add to cart</a>
-        </div>
 
-        <div class="box">
-            <img class="dish-img" src="images/dish-3.png" alt="">
-            <h3>Waffle Baffle</h3>
-            <span>$12.99</span>
-            <a href="#" class="btn">add to cart</a>
-        </div> -->
-        
-        <!-- OLD CODE -->
-        <!-- <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-            <img class="dish-img" src="images/dish-4.png" alt="">
-            <h3>Morning Hashbrowns</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <span>$6.99</span>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-            <img class="dish-img" src="images/dish-5.png" alt="">
-            <h3>1+2 IceCream</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <span>$6.50</span>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-            <img class="dish-img" src="images/dish-6.png" alt="">
-            <h3>Berry Yummy Porridge</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <span>$5.99</span>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-            <img class="dish-img" src="images/dish-7.png" alt="">
-            <h3>Nana's Banana Porridge</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <span>$5.99</span>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-            <img class="dish-img" src="images/dish-8III.png"alt="">
-            <h3>English Muffins</h3>
-            </h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <span>$15.99</span>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-            <img class="dish-img" src="images/dish-9.png" alt="">
-            <h3>Americano</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <span>$2.99</span>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-            <img class="dish-img" src="images/dish-10.png" alt="">
-            <h3>Caramel Latte</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-            <span>$3.99</span>
-            <a href="#" class="btn">add to cart</a>
-        </div> 
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-            <img class="dish-img" src="images/dish-11.png" alt="">
-            <h3>Jam Condiments</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-                <select>
-                    <option value="actual value 1">Strawberry Jam</option>
-                    <option value="actual value 2">Cherry Jam</option>
-                    <option value="actual value 3">Rasberry Jam</option>
-                  </select>
-            </div>
-            <span>$0.99; each condiments</span>
-            <a href="#" class="btn">add to cart</a>
-        </div> 
-        <div class="box">
-            <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-eye"></a>
-            <img class="dish-img" src="images/dish-12.png" alt="">
-            <h3> Water</h3>
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-                <select>
-                    <option value="actual value 2">Hot</option>
-                    <option value="actual value 1">Warm</option>
-                    <option value="actual value 2">Cold</option>
-
-                  </select>
-            </div>
-            <span>$0.99; each beverage type</span>
-            <a href="#" class="btn">add to cart</a>
-        </div> -->
     </div> 
+        
 
-</section>
+</section> -->
 
 <!-- dishes section ends -->
 
@@ -366,166 +227,29 @@
 
     <div class="box-container">
 
-        <div class="box">
-            <div class="image">
-                <img src="images/menu-1.jpg" alt="">
-                <a href="#" class="fas fa-heart"></a>
-            </div>
-            <div class="content">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <h3>Tasty Pateries</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                <span class="price">$1.99</span>
-            </div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
+        <?php
+        
+        while ($row = mysqli_fetch_assoc($result)) {
+        
+        ?>
 
         <div class="box">
             <div class="image">
-                <img src="images/menu-2.jpg" alt="">
-                <a href="#" class="fas fa-heart"></a>
+                <img src="images/<?php echo $row['image'];?>" alt="">
+                <!-- <a href="#" class="fas fa-heart"></a> -->
             </div>
             <div class="content">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <h3>Chocolate Chip Cookies</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                <span class="price">$1.00</span>
+                <h3><?php echo $row['itemName'];?></h3>
+                <p><?php echo $row['description'];?></p>
+                <span class="price">$<?php echo $row['price'];?></span>
             </div>
-            <a href="#" class="btn">add to cart</a>
+            <a href="#" class="btn atc" onclick="addToCart(<?php echo $row['itemID']?>)">add to cart</a>
         </div>
 
-        <div class="box">
-            <div class="image">
-                <img src="images/menu-3.jpg" alt="">
-                <a href="#" class="fas fa-heart"></a>
-            </div>
-            <div class="content">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <h3>Crepes de Paris</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                <span class="price">$2.00</span>
-            </div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
+        <?php 
+                }
+        ?>
 
-        <div class="box">
-            <div class="image">
-                <img src="images/menu-4.jpg" alt="">
-                <a href="#" class="fas fa-heart"></a>
-            </div>
-            <div class="content">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <h3>Türkish Coffee</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                <span class="price">$3.99</span>
-            </div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/menu-5.jpg" alt="">
-                <a href="#" class="fas fa-heart"></a>
-            </div>
-            <div class="content">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <h3>Cold Brew</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                <span class="price">$2.99</span>
-            </div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/menu-6.jpg" alt="">
-                <a href="#" class="fas fa-heart"></a>
-            </div>
-            <div class="content">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <h3>Cup to the Cakes</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                <span class="price">$1.99</span>
-            </div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/menu-7.jpg" alt="">
-                <a href="#" class="fas fa-heart"></a>
-            </div>
-            <div class="content">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <h3>Summer Drinks</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                <span class="price">Deal: 3 for $4.99</span>
-            </div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/menu-8.jpg" alt="">
-                <a href="#" class="fas fa-heart"></a>
-            </div>
-            <div class="content">
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <h3>Acai Bowl</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                <span class="price">$5.50</span>
-            </div>
-            <a href="#" class="btn">add to cart</a>
-        </div>
-        </div>
 
     </div>
 
@@ -606,7 +330,7 @@
             <h3>quick links</h3>
             <div class="links">
                 <span><a href="#home"><i class='bx bx-home-alt'></i></a></span>
-                <span><a href="#dishes"><i class='bx bx-dish' ></i></a></span>
+                <!-- <span><a href="#dishes"><i class='bx bx-dish' ></i></a></span> -->
                 <span><a href="#about"><i class='bx bx-question-mark' ></i></a></span>
                 <span><a href="#menu"><i class='bx bx-food-menu' ></i></a></span>
             </div>
@@ -614,16 +338,23 @@
 
         <div class="box">
             <h3>contact info</h3>
-            <a href="#">+123-456-7890</a>
-            <a href="#">+111-222-3333</a>
-            <a href="#">cs211100@gmail.com</a>
-            <a href="#">cs211065@gmail.com</a>
-            <a href="#">cs211234@gmail.com</a>
-            <a href="#">548 Chestnut St.
-                Burbank, IL 60459,Colorado, US</a>
+            <div class="inline">
+                <div class="horizontal">
+                    <a href="#">+123-456-7890</a>
+                    <a href="#">+111-222-3333</a>
+                </div>
+                <div class="horizontal">
+                    <a href="#">cs211100@gmail.com</a>
+                    <a href="#">cs211131@gmail.com</a>
+                    <a href="#">cs211065@gmail.com</a>
+                    <a href="#">cs211133@gmail.com</a>
+                </div>
+                <a href="#">548 Chestnut St.
+                    Burbank, IL 60459,Colorado, US</a>
+            </div>
         </div>
 
-        <div class="box">
+        <div class="box follow">
             <h3>follow us</h3>
             <a href="#">facebook</a>
             <a href="#">twitter</a>
@@ -651,7 +382,13 @@
     </div>
     <div class="cart-content">
         <!-- Cart Items -->
-        <div class="cart-items"></div>
+        <div class="cart-items">
+                
+
+
+
+
+        </div>
                 
         <!-- Cart Actions -->
         <div class="cart-actions">

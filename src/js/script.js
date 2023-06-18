@@ -1,17 +1,5 @@
 // website learned and accessed: https://codesandbox.io/s/ozbh1?file=/index.html 
-// var swiper = new Swiper(".home-slider", {
-//     spaceBetween: 200,
-//     centeredSlides: true,
-//     autoplay: {
-//         delay: 7500,
-//         disableOnInteraction: true,
-//     },
-//     pagination: {
-//         el: ".swiper-pagination", 
-//         clickable: true,
-//     },
-//     loop: true,
-// });
+
 let navbar = document.querySelector('.navbar');
 
 // ====================== scroll sections active link  =======================
@@ -50,29 +38,29 @@ window.onscroll = () => {
 
 top.visible_id = 'one'; 
 //! uncomment later
-// function swipe() { 
+function swipe() { 
 
-//     // var right_e = document.getElementById('right'); 
-//     // var left_e = document.getElementById('left'); 
-//     var home_content = document.querySelectorAll('.slide');
+    // var right_e = document.getElementById('right'); 
+    // var left_e = document.getElementById('left'); 
+    var home_content = document.querySelectorAll('.slide');
 
-// if (top.visible_id == 'one') {
-//     home_content[0].style.display = 'none'; 
-//     home_content[1].style.display = 'flex'; 
-//     top.visible_id = 'two';
-// }
-// else if (top.visible_id == 'two') {
-//     home_content[1].style.display = 'none'; 
-//     home_content[2].style.display = 'flex'; 
-//     top.visible_id = 'three';
-// } else {
-//     home_content[2].style.display = 'none'; 
-//     home_content[0].style.display = 'flex'; 
-//     top.visible_id = 'one';
-// }
-// var t = setTimeout("swipe()",3000);
-// }
-// swipe();
+if (top.visible_id == 'one') {
+    home_content[0].style.display = 'none'; 
+    home_content[1].style.display = 'flex'; 
+    top.visible_id = 'two';
+}
+else if (top.visible_id == 'two') {
+    home_content[1].style.display = 'none'; 
+    home_content[2].style.display = 'flex'; 
+    top.visible_id = 'three';
+} else {
+    home_content[2].style.display = 'none'; 
+    home_content[0].style.display = 'flex'; 
+    top.visible_id = 'one';
+}
+var t = setTimeout("swipe()",3000);
+}
+swipe();
 //!
 
 // const cartButton = document.querySelector('.fa-shopping-cart');
@@ -124,14 +112,21 @@ const subtotalPrice = document.getElementById('subtotal-price');
 const itemsList = document.querySelector('.items-list');
 const totalPrice = document.querySelector('.total-price');
 
+// const addToCartBtn = document.querySelector('.atc');
+
 
 let cart_data = []
+
+let item_ids = []
+
+let cart_items_id = []
 
 openBtn.addEventListener('click', openCart);
 closeBtn.addEventListener('click', closeCart);
 backdrop.addEventListener('click', closeCart);
+// addToCartBtn.addEventListener('click', addToCart);
 
-renderItems();
+// renderItems();
 renderCartItems();
 renderCheckoutItems();
 
@@ -152,6 +147,74 @@ function closeCart () {
     }, 500);
 }
 
+//? WORKING ON THIS RN !!
+
+// item_ids.push(1);
+// item_ids.push(2);
+// item_ids.push(3);
+// console.log(item_ids)
+
+function addToCart(item_id) {
+    // QUERY:
+    // 1. check if item_id is already in cart : 
+    // 2. if not, add item_id to cart
+    // 3. if yes, increase qty of item_id in cart
+
+    // const itemFound = item_ids.find((id) => id === item_id)
+
+    // if (itemFound) {
+    //     increaseQty(item_id)
+    // } else {
+    //     item_ids.push(item_id)
+    // }
+
+    //let sql = `INSERT INTO cart (item_id) VALUES (${item_id})`
+    //const cartItems = document.querySelector('.cart-items');
+    // cartItems.innerHTML = ''
+    console.log("cart_items_id = "+cart_items_id)
+
+    if (cart_items_id. find(
+        (item) => item.id === item_id
+    )) {
+        cart_items_id = cart_items_id.map((item) => {
+            if (item.id == item_id) {
+                console.log("increasing item.qty = "+item.qty)
+                item.qty += 1
+            }
+            return item
+        })
+        console.log("cart_items_id = "+cart_items_id)
+        // console.log(cart_items_id)
+    }
+    else {
+        cart_items_id.push({
+            id: item_id,
+            qty: 1
+        })
+        console.log("cart_items_id = "+cart_items_id)
+        item_ids.push(item_id)
+        
+    }
+
+    
+    updateCart();
+    openCart();
+    console.log(cart_items_id);
+
+    
+    console.log(item_id);
+    console.log(item_ids);
+    console.log("OOGABOOGA");
+
+    console.log(item_ids.toString());
+    console.log("("+item_ids.toString()+")");
+    var id_list = "("+item_ids.toString()+")";
+
+    localStorage.setItem('id_list', id_list);
+
+    updateCart();
+}
+
 
 // 1. get items from database
 // 2. create a div/img/price/name for each item tags using js
@@ -168,6 +231,9 @@ function addItem(idx, itemId) {
     }else {
         cart_data.push(ITEMS[idx])
     }
+
+
+    
     updateCart();
     openCart();
 }
@@ -232,42 +298,149 @@ function renderItems() {
     })
 }
 
+//addItem()
+// localstorage.add (key and value:id)
+// localstorage.get (key)
+
 // Display / Render Cart Items
-function renderCartItems() {
-    // remove everything from cart
-    cartItems.innerHTML = ''
-    // add new data
-    cart_data.forEach(item => {
-        const cartItem = document.createElement('div')
-        cartItem.classList.add('cart-item')
-        cartItem.innerHTML = `
-        <div class="remove-item" onclick="removeCartItem(${item.id})">
-            <span>&times;</span>
-        </div>
-        <div class="item-img">
-            <img src="images/${item.image}" alt="">
-        </div>
-        <div class="item-details">
-            <p>${item.name}</p>
-            <strong>$${item.price}</strong>
-            <div class="qty">
-                <span onclick="decreaseQty(${item.id})">-</span>
-                <strong>${item.qty}</strong>
-                <span onclick="increaseQty(${item.id})">+</span>
-            </div>
-        </div>
-        `
-        cartItems.appendChild(cartItem)
-    })
+
+
+function increaseQtyinCart(itemId) {
+    cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty + 1} : item)
+    updateCart()
+    updateCheckout()
 }
+function renderCartItems() {
+    console.log("renderCartItems")
+
+    //? 1. Make the sql query based off of the array item_ids
+    //? 2. run the sql query -> get the items from the database √
+    //? 3. display the items in the cart using while loop of php √
+
+    // for now: trying it on index.php file √
+
+    // console.log(item_ids)
+    // console.log("("+item_ids.toString()+")");          // => (1,4,3)
+    // id_list = "("+item_ids.toString()+")"
+    // query = `SELECT * FROM menu WHERE itemID IN (${id_list})` //? √
+
+
+    const cartItems = document.querySelector('.cart-items');
+    cartItems.innerHTML = '';
+    // cartItems.innerHTML = 'WEEEEEEEEEEEEEEEEEEEE';
+
+    var id_list = localStorage.getItem('id_list');
+    console.log("id_list: "+id_list);
+
+    
+    var url = './test.php?x='+id_list;
+
+    fetch(url)
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function (body) {
+        // body.forEach((item) =>  {
+
+        //     const cartItem = document.createElement('div');
+        //     cartItem.classList.add('cart-item');
+        //     current_item = cart_items_id.find((cartitem) => {
+        //         if (cartItem.id == item.itemID) {
+        //         console.log(" item.id: "+cartitem.id+" item.qty: "+cartitem.qty+" itemID: "+ item.itemID + " ==: "+(cartitem.id == item.itemID));
+        //         }
+                
+        //     })
+        //     cartItem.innerHTML = `
+            
+        //     <div class="cart-item">
+        //             <div class="remove-item" onclick="removeCartItem(${item.itemID})">
+        //                 <span>&times;</span>
+        //             </div>
+        //             <div class="item-img">
+        //                 <img src="images/${item.image}" alt="">
+        //             </div>
+        //             <div class="item-details">
+        //                 <p>${item.itemName}</p>
+        //                 <strong>$ ${item.price} </strong>
+        //                 <div class="qty">
+        //                     <span onclick="decreaseQty(${item.itemID})">-</span>
+        //                     <strong>xx</strong>
+        //                     <span onclick="increaseQty(${item.itemID})">+</span>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     `
+        //     cartItems.appendChild(cartItem);
+
+        // })
+
+       
+
+
+    
+    console.log("body===========================================================================");
+    console.log(body);
+    });
+
+
+
+   
+    }
+
+
+    
+
+
+
+
+
+
+
+    // remove everything from cart
+    //cartItems.innerHTML = ''
+    // add new data
+    // cart_data.forEach(item => {
+    //     const cartItem = document.createElement('div')
+    //     cartItem.classList.add('cart-item')
+    //     cartItem.innerHTML = `
+    //     <div class="remove-item" onclick="removeCartItem(${item.id})">
+    //         <span>&times;</span>
+    //     </div>
+    //     <div class="item-img">
+    //         <img src="images/${item.image}" alt="">
+    //     </div>
+    //     <div class="item-details">
+    //         <p>${item.name}</p>
+    //         <strong>$${item.price}</strong>
+    //         <div class="qty">
+    //             <span onclick="decreaseQty(${item.id})">-</span>
+    //             <strong>${item.qty}</strong>
+    //             <span onclick="increaseQty(${item.id})">+</span>
+    //         </div>
+    //     </div>
+    //     `
+    //     cartItems.appendChild(cartItem)
+    // })
+    // cartItems.innerHTML = `
+    //  <?php 
+     
+    
+    
+    
+    // `
+    
+    
+    
+    
+
 
 function updateCart() {
     //rerender cart items with updated data
     renderCartItems()
     // Update Items Number in cart
-    calcItemsNum()
+    //calcItemsNum()
     // Update Subtotal Price
-    calcSubtotalPrice()
+   // calcSubtotalPrice()
 }
 
 
