@@ -34,15 +34,6 @@
 </section>
 
 <section class="info">
-    <!-- 
-        1. Add a new Employee √
-        2. View all Employees  √
-        3. View current Orders
-        4. View all Customers
-        5. View all Items in Menu
-        6. Remove Employee √
-        7. Edit Employee Job (optional)
-     -->
 
      <div class="outer">
         <div class="heading-text">
@@ -56,21 +47,11 @@
                 <a href="show-employees.php">View all employees</a>
             </div>
             <div>
-                <a href="view-orders.php">View current orders</a>
-            </div>
-            <div>
                 <a href="view-customers.php">View all customers</a>
             </div>
             <div>
                 <a href="view-menu.php">View all items in menu</a>
             </div>
-            <!-- <div class="remove-employee">
-                <a href="remove-employee.php">Remove an employee</a>
-            </div>
-            <div class="edit-job">
-                <a href="edit-job.php">Edit employee job</a>
-            </div> -->
-
         </div>
      </div>
 

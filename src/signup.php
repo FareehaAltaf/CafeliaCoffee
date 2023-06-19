@@ -17,10 +17,10 @@
 
     <?php
     
-    include 'connection.php';
-
+    
     function addCustomer () {
-
+        
+        include 'connection.php';
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -28,10 +28,10 @@
         $address = $_POST['address'];
         
         $sql = "INSERT INTO customers (name, ph_no, address, email, password) VALUES ('$name', '$ph_no', '$address', '$email', '$password')";
-        // ask miss that the data isnt entering the database
-        //$query = mysqli_query($conn, $sql);
+
         Global $result;
-        $result = sendQuery($sql);
+
+        $result = mysqli_query($conn, $sql);
 
     }
     
@@ -40,17 +40,6 @@
 
 </head>
 <body>
-<!-- Before we start here are impt HTML elements we'll use:
-    The <section> element can be used to define a part of a website with related content.
-
-    The <article> element can be used to define an individual piece of content.
-    
-    The <header> element can be used to define a header (in a document, a section, or an article).
-    
-    The <footer> element can be used to define a footer (in a document, a section, or an article).
-    
-    The <nav> element can be used to define a container of navigation links. -->
-<!-- header section starts-->
 
 <header>
 
@@ -68,24 +57,7 @@
     <div class="outer">
         <div class="head">
             <p>Sign Up</p>
-            <!-- <a href="#" id="login-btn">Login</a>
-            <div class="line"></div>
-            <a href="#" id="signup-btn">SignUp</a> -->
         </div>
-
-        <!-- <div class="login-form">
-            <form action="login.php" method="post">
-                <div class="email-login">
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
-                <div class="pswd-login">
-                    <input type="password" name="password" placeholder="Password" required>
-                </div>
-                <div class="btn-login">
-                    <input type="submit" name="login" value="Login">
-                </div>
-            </form>
-        </div> -->
 
         <div class="signup-box">
             <form method="POST" action="
@@ -99,8 +71,6 @@
             ">
 
                 <input type="text" placeholder="Name" name="name" required/>
-
-                <!-- <input type="text" placeholder="Last Name" required/> -->
 
                 <input type="email" placeholder="Email" name="email" required/>
 

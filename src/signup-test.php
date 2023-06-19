@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $address = $_POST['address'];
     
     $sql = "INSERT INTO customers (name, ph_no, address, email, password) VALUES ('$name', '$ph_no', '$address', '$email', '$password')";
-    // ask miss that the data isnt entering the database
+
     $query = mysqli_query($conn, $sql);
     
     if ($query) {

@@ -5,9 +5,7 @@ include 'connection.php';
 if(isset($_GET['cid']))
 {
 
-    //echo 'This is from test.php';
     $get = $_GET['cid'];
-    // echo $get;
     
     try {
         $query = "INSERT INTO orders (customerID, orderTime) VALUES ('$get', NOW())";
@@ -18,11 +16,9 @@ if(isset($_GET['cid']))
         $orderID_row = mysqli_fetch_array($orderID_result);
         $orderID = $orderID_row['orderID'];
 
-        // header("Content-Type: application/json");
         echo ($orderID);
 
     } catch (\Throwable $th) {
-        // header("Content-Type: application/json");
         echo '0';
     }
     

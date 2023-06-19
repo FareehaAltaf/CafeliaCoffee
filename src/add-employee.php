@@ -51,13 +51,6 @@
 
                         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
 
-                            // $servername = "localhost";
-                            // $username = "root";
-                            // $password = "";
-                            // $dbname = "Cafelia";
-                            // $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
-
-
                             $FirstName = $_POST['FirstName'];
                             $LastName = $_POST['LastName'];
                             $jobID = $_POST['jobID'];
@@ -67,16 +60,6 @@
                             $sql = "INSERT INTO employee (FirstName, LastName, jobID, BirthDate, HireDate, cnic) VALUES ('$FirstName', '$LastName', '$jobID', '$BirthDate', UTC_TIMESTAMP(), '$cnic')";
 
                             $query = mysqli_query($conn, $sql);
-
-                            // if ($query) {
-                            //     echo "New record created successfully";
-                            // } else {
-                            //     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                            // }
-
-
-                            
-
 
                         }
 

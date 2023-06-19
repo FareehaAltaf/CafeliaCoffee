@@ -13,12 +13,4 @@ if (isset($_GET['id'])) {
     
 }
 
-// $item_names = [];
-// while ($row = mysqli_fetch_array($result)) {
-//     $item_name['itemName'] = $row['itemName'];
-//     array_push($item_names, $item_name);
-// }
-// header("Content-Type: application/json");
-// echo json_encode($item_names);
-
 ?>

@@ -19,15 +19,13 @@ if (mysqli_num_rows($result) > 0) {
     // Redirect to the desired page
     $row = mysqli_fetch_assoc($result);
     $cid = $row['customerID'];
-    header("Location: http://localhost/Cafelia/index.php?cid=$cid");
+    header("Location: ./index.php?cid=$cid");
     
     exit();
 } else {
     echo "Invalid email or password.";
-    header("Location: http://localhost/Cafelia/login.php");
+    header("Location: ./login.php");
 }
-
-// Close the database connection
 
 
 }

@@ -45,8 +45,8 @@
 
 <section class="info">
     <div class="outer">
-        <!-- Show All Employees , Remove Employee , Edit Employee Job (TBD) -->
-            <div class="heading-text">
+
+    <div class="heading-text">
                 Menu Items
             </div>
 
