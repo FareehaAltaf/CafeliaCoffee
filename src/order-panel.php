@@ -47,7 +47,7 @@
 
 
 </head>
-<body>
+<body onload="renderOrders();">
 <!-- Before we start here are impt HTML elements we'll use:
     The <section> element can be used to define a part of a website with related content.
 
@@ -74,98 +74,25 @@
     </div>
 </section>
 
+<!-- 
+
+select orderID, customerID from orders; √
+1. one by one get the orderID, customerID from the orders table and for each orderID do: √
+    2. select itemID, quantity from orderDetails where orderID = $orderID
+    3. cycle results and append all items using (4) and quantity
+    4. select itemName from menu where itemID = $itemID
+
+    6. select customerID from orders where orderID = $orderID
+
+ -->
+
+
+
 <section class="checkout">
     <div class="outer">
         <div class="heading-text">
             Orders to be completed
         </div>
-
-        <!-- Ek Item -->
-        <div class="item">
-
-            <div class="order-details">
-                <p>
-                    Order ID: $ID <br>
-                    Item 1 Name: Qty1 <br>
-                    Item 2 Name: Qty2 <br>
-                    Item 3 Name: Qty3
-                </p>
-            </div>
-            <div class="customer-details">
-                <p>Customer Name</p>
-            </div>
-            <div class="completed">
-                <span>
-                    <i class='bx bxs-check-square' ></i>
-                </span>
-            </div>
-        </div>
-
-        <!-- Ek Item -->
-        <div class="item">
-
-            <div class="order-details">
-                <p>
-                    Order ID: $ID <br>
-                    Item 1 Name: Qty1 <br>
-                    Item 2 Name: Qty2 <br>
-                    Item 3 Name: Qty3
-                </p>
-            </div>
-            <div class="customer-details">
-                <p>Customer Name</p>
-            </div>
-            <div class="completed">
-                <span>
-                    <i class='bx bxs-check-square' ></i>
-                </span>
-            </div>
-        </div>
-
-        <!-- Ek Item -->
-        <div class="item">
-
-            <div class="order-details">
-                <p>
-                    Order ID: $ID <br>
-                    Item 1 Name: Qty1 <br>
-                    Item 2 Name: Qty2 <br>
-                    Item 3 Name: Qty3
-                </p>
-            </div>
-            <div class="customer-details">
-                <p>Customer Name</p>
-            </div>
-            <div class="completed">
-                <span>
-                    <i class='bx bxs-check-square' ></i>
-                </span>
-            </div>
-        </div>
-
-        <!-- Ek Item -->
-        <div class="item">
-
-            <div class="order-details">
-                <p>
-                    Order ID: $ID <br>
-                    Item 1 Name: Qty1 <br>
-                    Item 2 Name: Qty2 <br>
-                    Item 3 Name: Qty3
-                </p>
-            </div>
-            <div class="customer-details">
-                <p>Customer Name</p>
-            </div>
-            <div class="completed">
-                <span>
-                    <i class='bx bxs-check-square' ></i>
-                </span>
-            </div>
-        </div>
-
-
-
     </div>
 </section>
 

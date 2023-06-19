@@ -1042,6 +1042,82 @@ placement & degin of the eye and heart hovering over our image */
     align-items: center;
 
 }
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50rem;
+    width: 100%;
+    background-color: white;
+}
+
+.main .outer {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    /* padding-bottom: 5rem; */
+    width: 50rem;
+    background-color: #ff81214f;
+    border-radius: 25px;
+    box-shadow: #00000023 0px 0px 10px 0px;
+    /* background-color: #fff; */
+    overflow: hidden;
+}
+.main .outer .login-or-signup {
+    /* background-color: red; */
+    width: 80%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.main .outer .login-or-signup div{
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: #ff8121ad;
+    cursor: pointer;
+}
+.main .outer .login-or-signup div:hover{
+    background-color: #fff;
+    color: #000;
+    scale: 1.1;
+}
+.main .outer .login-or-signup .login {
+    border-top: 3px solid #fff;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom: 5px solid #fff;
+}
+.main .outer .login-or-signup .signup {
+    border-bottom: 3px solid #fff;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    /* border-bottom: 5px solid #fff; */
+}
+
+
+.outer-box {
+    padding-top: 2rem;
+    width: 80%;
+    height: 80%;
+    /* background-color: white; */
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
   
   .login-box {
     width: 360px;
@@ -1272,6 +1348,14 @@ input {
 }
 
 /* Checkout page */
+.checkout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 80%;
+    width: 100%;
+    background-color: white; */
+}
 
 .checkout .outer {
     display: flex;
@@ -1298,6 +1382,7 @@ input {
 
 .checkout .outer .item {
     background-color: #ffffffb7;
+    /* background-color: red; */
     display: flex;
     flex-direction: row;
     width: 90%;
@@ -1323,15 +1408,21 @@ input {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    background-color: red;
+    /* background-color: red; */
 }
 
 /*! There is no img here */
 .checkout-item-img {
     margin-left: 1.5%;
-    margin-top: 0.6%;
+    /* margin-top: 1.5%; */
     border-radius: 25px;
     width: 11%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 .checkout-item-img img {
     border-radius: 25px;
@@ -1346,13 +1437,28 @@ input {
     flex-direction: row;
     font-size: 17px;
     width: 89%;
-    gap: 40rem;
+    justify-content: space-between;
+    padding-right: 8rem;
+    padding-bottom: 4.5rem;
+    /* gap: 40rem; */
+    /* background-color: red; */
 }
 
 .checkout-item-details p {
     color: #c58532;
     font-weight: 800;
     font-size: 20px;
+    /* width: auto; */
+    /* background-color: red; */
+}
+
+.checkout-item-details .checkout-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    /* background-color: red; */
 }
 
 .checkout-item-details .qty {
@@ -1360,6 +1466,7 @@ input {
     align-items: center;
     gap: 1rem;
     padding-bottom: 5%;
+    /* background-color: blue; */
 }
 
 .checkout-item-details .qty span {
@@ -1494,25 +1601,34 @@ input {
 
 
 .order-details {
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
     /* padding-top: 4.5rem; */
-    padding-left: 1rem;
-    margin-left: 4rem;
+    /* padding-left: 1rem; */
+    /* margin-left: 4rem; */
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     font-size: 17px;
     width: 89%;
-    gap: 4rem;
+    /* gap: 4rem; */
     /* background-color: red; */
 }
+.order-details .orderID {
+    padding-top: 5%;
+    /* padding-bottom: 5%; */
 
-.order-details p {
+}
+
+.order-details .order-item,
+.order-details .orderID {
     color: #c58532;
     font-weight: 800;
     font-size: 20px;
-    margin-left: 5%;
-    padding-bottom: 5%;
+    margin-left: 7%;
     /* background-color: #fff; */
+}
+.order-details .order-item:last-child {
+    /* padding-top: 5%; */
+    padding-bottom: 5%;
 }
 
 
@@ -1663,7 +1779,7 @@ input {
     font-size: large;
     padding-top: 2%;
     padding-bottom: 2%;
-    /* background-color: #fff; */
+    /* background-color: red; */
 }
 .info .outer .item .employeeID {
     margin-left: 0rem;
@@ -1689,6 +1805,7 @@ input {
     font-size: 4rem;
     justify-content: center;
     align-items: center;
+    margin-right: 5rem;
 }
 
 .info .outer .item .edit span {
@@ -1703,7 +1820,8 @@ input {
     border-color: #000;
     user-select: none;
     background-color: #fff;
-    margin-right: -12rem;
+    /* margin-right: -12rem; */
+    /* padding-right: 5rem; */
 }
 
 .info .outer .item .edit span:hover {
@@ -1716,6 +1834,38 @@ input {
     font-size: medium;
     font-weight: 800;
 }
+
+
+.info .outer .item .ph_no {
+    margin-right: 5rem;
+
+}
+.info .outer .item .email {
+    text-transform: none;
+    display: flex;
+    justify-content: start;
+    
+}
+
+.info .outer .item .itemName {
+    /* background-color: red; */
+    justify-content: start;
+}
+
+.info .outer .item .price {
+    /* background-color: blue; */
+    justify-content: start;
+    padding-left: 4rem;
+
+}
+
+.info .outer .item .description {
+    /* background-color: red; */
+    width: 50%;
+    margin-left: 2rem;
+}
+
+
 
 .info .outer .employee-box {
     background-color: rgba(255, 255, 255, 0.594);

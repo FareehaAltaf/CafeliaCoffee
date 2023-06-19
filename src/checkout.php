@@ -14,10 +14,11 @@
 
     <!-- css file link  -->
     <link rel="stylesheet" href="css/style.css">
+    
 
 
 </head>
-<body>
+<body onload="checkout();">
 <!-- Before we start here are impt HTML elements we'll use:
     The <section> element can be used to define a part of a website with related content.
 
@@ -34,26 +35,28 @@
 
     <a href="" class="logo"><i class="fas fa-utensils">Cafelia</i></a>
 
-    <nav class="navbar">
-        <a class="active" href="#home">home</a> <!--"active":Highlight the active (pressed) button -->
-        <a href="#dishes">dishes</a>            <!--  # will jump to top of the page, where #home will jump to an section, div etcc.. with the id home. -->
-        <a href="#about">about</a>
-        <a href="#menu">menu</a>
-        <!-- <a href="#order">order</a> -->
-    </nav>
-
-    <div class="icons">
-        <i class="fas fa-bars" id="menu-bars"></i>
-        <!-- <i class="fas fa-search" id="search-icon"></i> -->
-        <i class='bx bx-search' id="search-icon"></i>
-        <a href="#" class="fas fa-heart"></a> <!-- kept href="#" as we have made pur website not responsive -->
-        <!-- <a href="#" class="fas fa-shopping-cart"></a> -->
-        <!-- Cart Open Button -->
-        <button id="open-cart-btn"><i class='bx bx-cart' style="font-size: 15px;"></i></button>
-        <!-- <button class="hamburger"><i class='bx bx-x'></i></button> -->
-    </div>
+    
 
 </header>
+
+<!-- <nav class="navbar"> -->
+        <!-- <a class="active" href="#home">home</a> "active":Highlight the active (pressed) button -->
+        <!-- <a href="#dishes">dishes</a>             # will jump to top of the page, where #home will jump to an section, div etcc.. with the id home. -->
+        <!-- <a href="#about">about</a> -->
+        <!-- <a href="#menu">menu</a> -->
+        <!-- <a href="#order">order</a> -->
+    <!-- </nav> -->
+
+    <!-- <div class="icons"> -->
+        <!-- <i class="fas fa-bars" id="menu-bars"></i> -->
+        <!-- <i class="fas fa-search" id="search-icon"></i> -->
+        <!-- <i class='bx bx-search' id="search-icon"></i> -->
+        <!-- <a href="#" class="fas fa-heart"></a> kept href="#" as we have made pur website not responsive -->
+        <!-- <a href="#" class="fas fa-shopping-cart"></a> -->
+        <!-- Cart Open Button -->
+        <!-- <button id="open-cart-btn"><i class='bx bx-cart' style="font-size: 15px;"></i></button> -->
+        <!-- <button class="hamburger"><i class='bx bx-x'></i></button> -->
+    <!-- </div> -->
 
 <section class="top">
     <div class="login-heading">
@@ -83,117 +86,10 @@ Remaking the whole thing:
         <div class="heading-text">
             <h3>Your Items</h3>
         </div>
-        <div class="items-list"> </div>
-
-        <!-- <div class="item">
-                <div class="remove-item">
-                    <span>&times;</span>
-                </div>
-                <div class="checkout-item-img"> 
-                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-                </div>
-                <div class="checkout-item-details">
-                    <p>Item Name</p>
-                    <strong>$Price</strong>
-                    <div class="qty">
-                        <span>-</span>
-                        <strong>qty</strong>
-                        <span >+</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="item">
-                <div class="remove-item">
-                    <span>&times;</span>
-                </div>
-                <div class="checkout-item-img"> 
-                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-                </div>
-                <div class="checkout-item-details">
-                    <p>Item Name</p>
-                    <strong>$Price</strong>
-                    <div class="qty">
-                        <span>-</span>
-                        <strong>qty</strong>
-                        <span >+</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="remove-item">
-                    <span>&times;</span>
-                </div>
-                <div class="checkout-item-img"> 
-                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-                </div>
-                <div class="checkout-item-details">
-                    <p>Item Name</p>
-                    <strong>$Price</strong>
-                    <div class="qty">
-                        <span>-</span>
-                        <strong>qty</strong>
-                        <span >+</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="remove-item">
-                    <span>&times;</span>
-                </div>
-                <div class="checkout-item-img"> 
-                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-                </div>
-                <div class="checkout-item-details">
-                    <p>Item Name</p>
-                    <strong>$Price</strong>
-                    <div class="qty">
-                        <span>-</span>
-                        <strong>qty</strong>
-                        <span >+</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="remove-item">
-                    <span>&times;</span>
-                </div>
-                <div class="checkout-item-img"> 
-                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-                </div>
-                <div class="checkout-item-details">
-                    <p>Item Name</p>
-                    <strong>$Price</strong>
-                    <div class="qty">
-                        <span>-</span>
-                        <strong>qty</strong>
-                        <span >+</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="remove-item">
-                    <span>&times;</span>
-                </div>
-                <div class="checkout-item-img"> 
-                    <img src="images/dish-1.jpeg" style="width: 100%;" alt="">
-                </div>
-                <div class="checkout-item-details">
-                    <p>Item Name</p>
-                    <strong>$Price</strong>
-                    <div class="qty">
-                        <span>-</span>
-                        <strong>qty</strong>
-                        <span >+</span>
-                    </div>
-                </div>
-            </div> -->
+        <div class="items-list" > </div>
         
+
+    
 
 
         <!-- Subtotal and Total -->
@@ -201,7 +97,7 @@ Remaking the whole thing:
             <!-- Order Button -->
 
             <div class="order-btn">
-                <a href="#">Order Now</a>
+                <a href="#" onclick="order();">Order Now</a>
             </div>
 
             <div class="totals">

@@ -14,6 +14,10 @@
 
     <!-- css file link  -->
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        localStorage.clear();
+        // console.log(localStorage.getItem('id_list'));
+    </script>
 
     <?php 
     
@@ -65,7 +69,7 @@
 
     <nav class="navbar">
         <a class="active" href="#home">home</a> <!--"active":Highlight the active (pressed) button -->
-        <a href="#dishes">dishes</a>            <!--  # will jump to top of the page, where #home will jump to an section, div etcc.. with the id home. -->
+        <!-- <a href="#dishes">dishes</a>             # will jump to top of the page, where #home will jump to an section, div etcc.. with the id home. -->
         <a href="#about">about</a>
         <a href="#menu">menu</a>
         <!-- <a href="#order">order</a> -->
@@ -74,8 +78,8 @@
     <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>
         <!-- <i class="fas fa-search" id="search-icon"></i> -->
-        <i class='bx bx-search' id="search-icon"></i>
-        <a href="#" class="fas fa-heart"></a> <!-- kept href="#" as we have made pur website not responsive -->
+        <!-- <i class='bx bx-search' id="search-icon"></i> -->
+        <!-- <a href="#" class="fas fa-heart"></a> kept href="#" as we have made pur website not responsive -->
         <!-- <a href="#" class="fas fa-shopping-cart"></a> -->
         <!-- Cart Open Button -->
         <button id="open-cart-btn"><i class='bx bx-cart' style="font-size: 15px;"></i></button>
@@ -107,7 +111,7 @@
                     <span>our special dish</span>
                     <h3>Cappuccino</h3>
                     <p>Espresso coffee topped with frothed hot milk or cream and often flavored with cinnamon</p>
-                    <a href="#" class="main-btn">order now</a>
+                    <!-- <a href="#" class="main-btn">order now</a> -->
                 </div>
                 <div class="image">
                     <img src="images/home-img-1.png" alt=""> 
@@ -120,7 +124,7 @@
                     <h3>Our Famous Milkshake</h3>
                     <p>Our sweet drink made by blending milk, ice cream, and flavorings 
                     or sweeteners such as butterscotch, caramel sauce, chocolate syrup all put into a thick, sweet, cold mixture.</p>
-                    <a href="#" class="main-btn">order now</a>
+                    <!-- <a href="#" class="main-btn">order now</a> -->
                 </div>
                 <div class="image">
                     <img src="images/home-img-2.png" alt="">
@@ -132,7 +136,7 @@
                     <span>our special dish</span>
                     <h3>American Breakfast</h3>
                     <p>American breakfast serves two eggs, a side of bacon or sausage, toast or cereal and your choice of juice</p>
-                    <a href="#" class="main-btn">order now</a>
+                    <!-- <a href="#" class="main-btn">order now</a> -->
                 </div>
                 <div class="image">
                     <img src="images/home-img-3.jpeg" alt="">
@@ -228,6 +232,10 @@
     <div class="box-container">
 
         <?php
+        if (isset($_GET['cid'])) {
+            $customerID = $_GET['cid'];
+            echo '<input type="hidden" id="customerID" value="'.$customerID.'">';
+        }
         
         while ($row = mysqli_fetch_assoc($result)) {
         

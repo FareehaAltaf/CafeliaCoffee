@@ -119,7 +119,7 @@ let cart_data = []
 
 let item_ids = []
 
-let cart_items_id = []
+var cart_items_id = []
 
 openBtn.addEventListener('click', openCart);
 closeBtn.addEventListener('click', closeCart);
@@ -128,7 +128,7 @@ backdrop.addEventListener('click', closeCart);
 
 // renderItems();
 renderCartItems();
-renderCheckoutItems();
+// renderCheckoutItems();
 
 function openCart () {
     cart.classList.add('open')
@@ -153,6 +153,7 @@ function closeCart () {
 // item_ids.push(2);
 // item_ids.push(3);
 // console.log(item_ids)
+localStorage.clear();
 
 function addToCart(item_id) {
     // QUERY:
@@ -184,7 +185,9 @@ function addToCart(item_id) {
             return item
         })
         console.log("cart_items_id = "+cart_items_id)
-        // console.log(cart_items_id)
+        //? Put the thingy in the local thingy
+        localStorage.setItem('cart_items_id', JSON.stringify(cart_items_id))
+        console.log("cart_items_id set in local storage")
     }
     else {
         cart_items_id.push({
@@ -193,11 +196,15 @@ function addToCart(item_id) {
         })
         console.log("cart_items_id = "+cart_items_id)
         item_ids.push(item_id)
+        //? Put the thingy in the local thingy
+        localStorage.setItem('cart_items_id', JSON.stringify(cart_items_id))
+        console.log("cart_items_id set in local storage")
         
     }
 
     
-    updateCart();
+    
+    // updateCart();
     openCart();
     console.log(cart_items_id);
 
@@ -233,6 +240,16 @@ function addItem(idx, itemId) {
     }
 
 
+    cart_items_id = cart_items_id.map((item) => {
+        if (item.id == item_id) {
+            console.log("increasing item.qty = "+item.qty)
+            item.qty += 1
+        }
+        return item
+    })
+    console.log("cart_items_id = "+cart_items_id)
+
+
     
     updateCart();
     openCart();
@@ -241,41 +258,164 @@ function addItem(idx, itemId) {
 // Remove Cart Items
 function removeCartItem(itemId) {
     cart_data = cart_data.filter((item) => item.id != itemId)
-    updateCart()
-    updateCheckout()
+    
+    // console.log(item_id);
+    console.log(item_ids);
+    // console.log("OOGABOOGA");
+    item_ids = item_ids.filter((item) => item != itemId);
+    console.log("item_ids after deleting that item:");
+    console.log(item_ids);
+
+    console.log(item_ids.toString());
+    console.log("("+item_ids.toString()+")");
+    var id_list = "("+item_ids.toString()+")";
+
+    localStorage.setItem('id_list', id_list);
+
+
+    updateCart();
+    // updateCheckout()
 }
 
 // Increase item qty
 function increaseQty(itemId) {
-    cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty + 1} : item)
+    // cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty + 1} : item)
+    cart_items_id = cart_items_id.map((item) => {
+        if (item.id == itemId) {
+            item.qty += 1
+            console.log("increasing item.qty = "+item.qty)
+        }
+        return item
+    })
+    cart_items_id.forEach((cartitem) => {
+        console.log("cartitem.id = "+cartitem.id+" cartitem.qty = "+cartitem.qty)
+    })
+    
+    localStorage.setItem('cart_items_id', JSON.stringify(cart_items_id))
+    console.log("cart_items_id set in local storage")
+    
     updateCart()
-    updateCheckout()
+    // updateCheckout()
+
+    //yahan dalo
+
 }
 
 // Decrease item qty
 function decreaseQty(itemId) {
-    cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty > 1 ? item.qty - 1 : item.qty} : item)
+    // cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty > 1 ? item.qty - 1 : item.qty} : item)
+    
+    
+    cart_items_id = cart_items_id.map((item) => {
+        if ((item.id == itemId) && (item.qty > 1)) {
+            item.qty -= 1
+            console.log("decreasing item.qty = "+item.qty)
+        }
+        return item
+    })
+
+    cart_items_id.forEach((cartitem) => {
+        console.log("cartitem.id = "+cartitem.id+" cartitem.qty = "+cartitem.qty)
+    })
+
+    localStorage.setItem('cart_items_id', JSON.stringify(cart_items_id))
+    console.log("cart_items_id set in local storage")
+
+    
+
     updateCart()
-    updateCheckout()
+    // updateCheckout()
 }
 
 //  Calculate Items Number
-function calcItemsNum() {
+function calcItemsNum() {//TODO: sada sahi karo
     let itemsCount = 0
 
-    cart_data.forEach(item => itemsCount += item.qty)
+    // cart_items_id = localStorage.getItem('cart_items_id');
+
+    cart_items_id.forEach(item => itemsCount += item.qty)
+
+    id_list = localStorage.getItem('id_list');
+    console.log("yeh lo id_list: "+id_list);
+    arrayy = id_list.split(',');
+    console.log("yeh lo id_list array: "+arrayy);
+    arrLength = arrayy.length;
+    console.log("yeh lo id_list array length: "+arrLength);
 
     itemsNum.innerText = itemsCount
 }
 
 // Calculate Subtotal price
 function calcSubtotalPrice() {
-    let subtotal = 0
+    // let subtotal = 0
+    // var quantity = 0
 
-    cart_data.forEach((item) => (subtotal += item.price*item.qty))
+    // cart_items_id.forEach((item) => (subtotal += item.price*item.qty))
+
+    
+
+
+
+    var id_list = localStorage.getItem('id_list');
+    console.log("Subtotal wala: id_list: "+id_list);
+
+    
+    var url = './cart.php?x='+id_list;
+
+    fetch(url)
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function (body) {
+
+        subtotal = 0
+
+        console.log("Subtotal new call");
+
+        
+        body.forEach((item) =>  {
+
+            quantity = 0
+
+            console.log(item);
+
+            cart_items_id.forEach(element => {
+                // console.log("Key: " + element.id + " qty: " + element.qty);
+                if (item.itemID == element.id) {    // match the id
+                    // console.log("Key Found: " + element.id + " With qty: " + element.qty);
+                    quantity = element.qty;         // get the quantity
+                }
+                
+            });
+
+            subtotal += item.price * quantity
+        })
+
+    console.log("subtotal body===========================================================================");
+    console.log(body);
+    console.log(subtotal);
 
     subtotalPrice.innerText = subtotal.toFixed(2)
-    totalPrice.innerText = subtotal.toFixed(2)
+    // totalPrice.innerText = subtotal.toFixed(2)
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -312,6 +452,12 @@ function increaseQtyinCart(itemId) {
 }
 function renderCartItems() {
     console.log("renderCartItems")
+    
+    const customerID = document.getElementById('customerID').value;
+    
+    localStorage.setItem('customerID', customerID);
+    
+    console.log("Saved Customer ID: "+customerID);
 
     //? 1. Make the sql query based off of the array item_ids
     //? 2. run the sql query -> get the items from the database √
@@ -326,53 +472,59 @@ function renderCartItems() {
 
 
     const cartItems = document.querySelector('.cart-items');
-    cartItems.innerHTML = '';
     // cartItems.innerHTML = 'WEEEEEEEEEEEEEEEEEEEE';
 
     var id_list = localStorage.getItem('id_list');
     console.log("id_list: "+id_list);
 
     
-    var url = './test.php?x='+id_list;
+    var url = './cart.php?x='+id_list;
 
     fetch(url)
     .then(function (response) {
     return response.json();
     })
     .then(function (body) {
-        // body.forEach((item) =>  {
+        console.log("new call");
+        cartItems.innerHTML = '';
+        var quantity;
+        body.forEach((item) =>  {
 
-        //     const cartItem = document.createElement('div');
-        //     cartItem.classList.add('cart-item');
-        //     current_item = cart_items_id.find((cartitem) => {
-        //         if (cartItem.id == item.itemID) {
-        //         console.log(" item.id: "+cartitem.id+" item.qty: "+cartitem.qty+" itemID: "+ item.itemID + " ==: "+(cartitem.id == item.itemID));
-        //         }
+            console.log(item);
+
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cart_items_id.forEach(element => {
+                // console.log("Key: " + element.id + " qty: " + element.qty);
+                if (item.itemID == element.id) {
+                    // console.log("Key Found: " + element.id + " With qty: " + element.qty);
+                    quantity = element.qty;
+                }
                 
-        //     })
-        //     cartItem.innerHTML = `
+            });
+            cartItem.innerHTML = `
             
-        //     <div class="cart-item">
-        //             <div class="remove-item" onclick="removeCartItem(${item.itemID})">
-        //                 <span>&times;</span>
-        //             </div>
-        //             <div class="item-img">
-        //                 <img src="images/${item.image}" alt="">
-        //             </div>
-        //             <div class="item-details">
-        //                 <p>${item.itemName}</p>
-        //                 <strong>$ ${item.price} </strong>
-        //                 <div class="qty">
-        //                     <span onclick="decreaseQty(${item.itemID})">-</span>
-        //                     <strong>xx</strong>
-        //                     <span onclick="increaseQty(${item.itemID})">+</span>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     `
-        //     cartItems.appendChild(cartItem);
+            <div class="cart-item">
+                    <div class="remove-item" onclick="removeCartItem(${item.itemID})">
+                        <span>&times;</span>
+                    </div>
+                    <div class="item-img">
+                        <img src="images/${item.image}" alt="">
+                    </div>
+                    <div class="item-details">
+                        <p>${item.itemName}</p>
+                        <strong>$ ${item.price} </strong>
+                        <div class="qty">
+                            <span onclick="decreaseQty(${item.itemID})">-</span>
+                            <strong>${quantity}</strong>
+                            <span onclick="increaseQty(${item.itemID})">+</span>
+                        </div>
+                    </div>
+                </div>
+            `
+            cartItems.appendChild(cartItem);
 
-        // })
+        })
 
        
 
@@ -385,7 +537,304 @@ function renderCartItems() {
 
 
    
-    }
+}
+
+function test() {
+
+    var cart_items_id = JSON.parse(localStorage.getItem('cart_items_id'));
+    cart_items_id.forEach(element => {
+        var order_details_url = './order.php?id='+element.id+'&qty='+element.qty;
+        
+        fetch(order_details_url)
+        .then (function (response){
+            return response.text();
+        })
+        .then (function (body) {
+            console.log(body);
+            // window.location.href = "order.php";
+            
+        })
+    });
+
+
+}
+
+function order() {
+    
+    // get the item ids and create query for order table
+
+    console.log("me order hoon")
+
+    // get the customer id
+    customerID = localStorage.getItem('customerID');
+    console.log("get customerID from local storage: "+customerID);
+
+    // const customerID = document.getElementById('customerID').value;
+    // console.log("==+== customerID: "+customerID);
+
+    // cart_items_id = JSON.parse(localStorage.getItem('cart_items_id'));
+
+    // create the order and get its order id
+    var insert_order_url = './create-order.php?cid='+customerID;
+
+    fetch(insert_order_url)
+    .then (function (response) {
+        return response.text();
+    })
+    .then (function (orderID) {
+        console.log("testing this function");
+        console.log(orderID);
+
+        var cart_items_id = JSON.parse(localStorage.getItem('cart_items_id'));
+        cart_items_id.forEach(element => {
+
+            var order_details_url = './order.php?id='+element.id+'&qty='+element.qty+'&oid='+orderID;
+            
+            fetch(order_details_url)
+            .then (function (response){
+                return response.text();
+            })
+            .then (function (body) {
+                console.log(body);
+                window.location.href = "order-complete.php?oid="+orderID;
+                
+            })
+    });
+
+    })
+
+
+}
+
+// function orderComplete() {
+//     const orderID = document.querySelector('.order-id');
+// }
+
+function renderOrders() {
+    console.log("renderOrders");
+
+    // 1. select orderID, customerID from orders
+
+    var url = './render-orders.php?x=all';
+
+    fetch(url)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (orders) {
+        // for each order, i will have a constant order id and customer id starting here..
+        console.log("getting orders");
+        console.log(orders);
+        // const orderDetails = document.querySelector('.order-details');
+        const outer = document.querySelector('.outer');
+        outer.innerHTML = `
+        <div class="heading-text">
+            Orders to be completed
+        </div>
+        `;
+
+        orders.forEach((order) =>  {
+            // for each order i need to create the white div[item]
+            console.log("OrderID of this order: "+order['orderID']);
+            console.log("CustomerID of this order: "+order['customerID']);
+
+            const orderItem = document.createElement('div');
+            orderItem.classList.add('item');
+
+
+            // const orderID = document.querySelector('.orderID');
+            // orderID.innerHTML ="Order ID: " + order['orderID'];
+
+            // const orderItem = document.createElement('div');
+            // orderItem.classList.add('order-item');
+
+            url = './get-customer.php?id='+order['customerID'];
+
+            fetch(url)
+            .then(function (response) {
+                return response.text();
+            })
+            .then(function (customerName) {
+
+                orderItem.innerHTML = `
+                    <div class="order-details">
+                        <div class="orderID">Order ID: ${order['orderID']}</div>
+                        <div class="order-item${order['orderID']}"></div>
+                    </div>
+                    <div class="customer-details">
+                        <p>Customer Name: ${customerName}(${order['customerID']})</p>
+                    </div>
+                    <div class="completed">
+                        <span onclick="deleteOrder(${order['orderID']});">
+                            <i class='bx bxs-check-square' ></i>
+                        </span>
+                    </div>
+                `;
+
+            })
+            .then(function () {
+                var url = './render-orders.php?x='+order['orderID'];
+                fetch(url)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (order_details) {
+                    // here i will get the itemID and quantity of each of the orders
+                    console.log("getting order details");
+                    console.log(order_details);
+                    order_details.forEach((order_detail) =>  {
+                        var itemID = order_detail['itemID'];
+                        var quantity = order_detail['quantity'];
+                        const orderItems = document.querySelector('.order-item'+order['orderID']);
+    
+                        // now i will get the item name using the itemID
+                        var itemName =  "";
+                        var customerName;
+                        // try using joins instead of searching for the item name through item id
+                        url = './get-item-name.php?id='+itemID;
+                        fetch(url)
+                        .then(function (response) {
+                            return response.text();
+                        })
+                        .then(function (item_name) {
+                            console.log("getting item names");
+                            console.log(item_name);
+                            // order_items.push(item_name+": "+quantity);
+                            // save the item name in a variable so u can use it in innerHTML
+                            itemName = item_name.toString();
+                            console.log("itemName: "+itemName);
+                            //TODO: do the same for customer name
+                        })
+                        .then(function () {
+                            
+                            console.log("itemName outside: "+itemName);
+        
+                            orderItems.innerHTML += `
+                            <div class = "order-item">${itemName} : ${quantity}</div>
+                            `;
+                        })
+                    })
+                })
+            })
+            // orderItem.innerHTML = order_items.join("<br>");
+            outer.appendChild(orderItem);
+
+        })
+    })
+
+
+}
+
+function deleteOrder(orderID) {
+    console.log("deleteOrder");
+    var url = './delete-order.php?id='+orderID;
+    fetch(url)
+    .then(function (response) {
+        return response.text();
+    })
+    .then(function (body) {
+        console.log(body);
+        renderOrders();
+    })
+}
+
+
+function checkout() {
+
+
+    console.log("me checkout hoon")
+
+
+    const itemsList = document.querySelector('.items-list');
+    // cartItems.innerHTML = 'WEEEEEEEEEEEEEEEEEEEE';
+
+    var id_list = localStorage.getItem('id_list');
+    console.log("id_list: "+id_list);
+
+    
+    var url = './cart.php?x='+id_list;
+
+    fetch(url)
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function (body) {
+        console.log("new call");
+        itemsList.innerHTML = '';
+        var quantity;
+        var total = 0
+        
+        body.forEach((item) =>  {
+
+            console.log(item);
+
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            
+            cart_items_id = JSON.parse(localStorage.getItem('cart_items_id'));
+            // console.log("cart_items_id: "+cart_items_id[0].id);
+            quantity = 0;
+
+            cart_items_id.forEach(itemEl => {
+
+                console.log("Key: " + itemEl.id + " qty: " + itemEl.qty);
+
+                if (item.itemID == itemEl.id) {
+                    console.log("Key Found: " + itemEl.id + " With qty: " + itemEl.qty);
+                    quantity = itemEl.qty;
+                }
+
+                
+            });
+            total += item.price * quantity;
+
+            // cart_items_id.forEach(element => {
+            //     // console.log("Key: " + element.id + " qty: " + element.qty);
+            //     if (item.itemID == element.id) {    // match the id
+            //         // console.log("Key Found: " + element.id + " With qty: " + element.qty);
+            //         quantity = element.qty;         // get the quantity
+            //     }
+                
+            // });
+            const itemsListEl = document.createElement('div');
+            itemsListEl.classList.add('item');
+
+            itemsListEl.innerHTML = `
+            
+                
+                <div class="checkout-item-img"> 
+                    <img src="images/${item.image}" style="width: 100%;" alt="">
+                </div>
+                <div class="checkout-item-details">
+                    <p>${item.itemName}</p>
+                    <div class = "checkout-info">
+                        <strong>$${item.price}</strong>
+                        <div class="qty">
+                            <strong>Qty: ${quantity}</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            itemsList.appendChild(itemsListEl);
+
+        })
+
+        const totalPrice = document.querySelector('.total-price');
+
+
+        totalPrice.innerHTML = total.toFixed(2);
+
+       
+
+
+    
+    console.log("body===========================================================================");
+    console.log(body);
+    });
+
+    
+}
 
 
     
@@ -438,9 +887,9 @@ function updateCart() {
     //rerender cart items with updated data
     renderCartItems()
     // Update Items Number in cart
-    //calcItemsNum()
+    calcItemsNum()
     // Update Subtotal Price
-   // calcSubtotalPrice()
+    calcSubtotalPrice()
 }
 
 
@@ -470,47 +919,47 @@ signupBtn.addEventListener('click', () => {
 
 
 // Display Cart Items in checkout page
-function renderCheckoutItems() {
-    // remove everything from cart
-    itemsList.innerHTML = ''
-    // add new data
-    cart_data.forEach(item => {
-        const itemsListEl = document.createElement('div')
-        itemsListEl.classList.add('item')
-        itemsListEl.innerHTML = `
-                <div class="remove-item" onclick="removeCartItem(${item.id})">
-                    <span>&times;</span>
-                </div>
-                <div class="checkout-item-img"> 
-                    <img src="images/${item.image}" style="width: 100%;" alt="">
-                </div>
-                <div class="checkout-item-details">
-                    <p>${item.name}</p>
-                    <strong>$${item.price}</strong>
-                    <div class="qty">
-                        <span onclick="decreaseQty(${item.id})">-</span>
-                        <strong>${item.qty}</strong>
-                        <span onclick="increaseQty(${item.id})">+</span>
-                    </div>
-                </div>
-        `
-        itemsList.appendChild(itemsListEl)
-    })
-}
+// function renderCheckoutItems() {
+//     // remove everything from cart
+//     itemsList.innerHTML = ''
+//     // add new data
+//     cart_data.forEach(item => {
+//         const itemsListEl = document.createElement('div')
+//         itemsListEl.classList.add('item')
+//         itemsListEl.innerHTML = `
+//                 <div class="remove-item" onclick="removeCartItem(${item.id})">
+//                     <span>&times;</span>
+//                 </div>
+//                 <div class="checkout-item-img"> 
+//                     <img src="images/${item.image}" style="width: 100%;" alt="">
+//                 </div>
+//                 <div class="checkout-item-details">
+//                     <p>${item.name}</p>
+//                     <strong>$${item.price}</strong>
+//                     <div class="qty">
+//                         <span onclick="decreaseQty(${item.id})">-</span>
+//                         <strong>${item.qty}</strong>
+//                         <span onclick="increaseQty(${item.id})">+</span>
+//                     </div>
+//                 </div>
+//         `
+//         itemsList.appendChild(itemsListEl)
+//     })
+// }
 
-function updateCheckout() {
-    //rerender cart items with updated data
-    renderCheckoutItems()
-    // Update Items Number in cart
-    calcItemsNum()
-    // Update Subtotal Price
-    calcSubtotalPrice()
-    console.log('updateCheckout');
-    console.log(cart_data);
-}
+// function updateCheckout() {
+//     //rerender cart items with updated data
+//     renderCheckoutItems()
+//     // Update Items Number in cart
+//     calcItemsNum()
+//     // Update Subtotal Price
+//     calcSubtotalPrice()
+//     console.log('updateCheckout');
+//     console.log(cart_data);
+// }
 
-document.addEventListener("DOMContentLoaded", function() {
-    console.log('DOM fully loaded and parsed');
-    renderCheckoutItems();
-    console.log(cart_data);
-  });
+// document.addEventListener("DOMContentLoaded", function() {
+//     console.log('DOM fully loaded and parsed');
+//     renderCheckoutItems();
+//     console.log(cart_data);
+//   });

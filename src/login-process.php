@@ -17,7 +17,9 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     // Redirect to the desired page
-    header("Location: http://localhost/Cafelia/index.php");
+    $row = mysqli_fetch_assoc($result);
+    $cid = $row['customerID'];
+    header("Location: http://localhost/Cafelia/index.php?cid=$cid");
     
     exit();
 } else {
