@@ -72,7 +72,14 @@
                         <select class="jobID-select" name="jobID">
                             <option value="1">Barista</option>
                             <option value="2">Manager</option>
-                            <option value="3">others</option>
+                            <option value="3">Assistant Manager</option>
+                            <option value="4">Social Media Manager</option>
+                            <option value="5">Baker Chef</option>
+                            <option value="6">Coffee Roaster</option>
+                            <option value="7">Dishwasher</option>
+                            <option value="8">Maintenance Staff</option>
+                            <option value="9">Customer Service Representativ</option>
+                            <option value="10">Server</option>
                         </select>
                     </div>
                     <div class="bday-box">

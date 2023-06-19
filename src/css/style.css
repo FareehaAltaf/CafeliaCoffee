@@ -1934,6 +1934,7 @@ input {
     font-weight: 900;
     color: #00000093;
     gap: 1rem;
+    overflow: hidden;
 }
 .job-box label {
     padding-left: 5rem;

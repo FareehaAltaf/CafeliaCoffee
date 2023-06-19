@@ -73,7 +73,7 @@
                 <div class="jobTitle emp-details"><?php echo $row['jobTitle']?></div>
                 <div class="BirthDate emp-details"><?php echo $row['BirthDate']?></div>
                 <div class="edit">
-                    <span>
+                    <span onclick="deleteEmployee(<?php echo $row['empID']?>);">
                         <p>Fire Employee</p>
                     </span>
                 </div>

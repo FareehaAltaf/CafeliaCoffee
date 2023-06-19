@@ -738,6 +738,27 @@ function deleteOrder(orderID) {
     })
 }
 
+function deleteEmployee(empID) {
+
+    console.log("deleteEmployee");
+    var url = './delete-employee.php?id='+empID;
+    fetch(url)
+    .then(function (response) {
+        return response.text();
+    })
+    .then(function (body) {
+        if (body == '1') {
+            console.log("Employee Deleted");
+        }
+        else {
+            console.log("Employee Not Deleted");
+        }
+        console.log(body);
+        location.reload();
+    })
+    
+}
+
 
 function checkout() {
 
