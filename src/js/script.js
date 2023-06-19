@@ -1,4 +1,3 @@
-// website learned and accessed: https://codesandbox.io/s/ozbh1?file=/index.html 
 
 let navbar = document.querySelector('.navbar');
 
@@ -11,7 +10,7 @@ let navLinks = document.querySelectorAll('header nav a');
 // window.onscroll
 
 window.onscroll = () => {
-    // console.log("Haaiiii");
+
     sections.forEach(sec => {
         let top = window.scrollY;
         let offset = sec.offsetTop -150;
@@ -31,13 +30,13 @@ window.onscroll = () => {
 
     header.classList.toggle('sticky', window.scrollY > 100);
 
-    // ====================== remove toggle icon and navbor when clicked navbar link (scroll)  =======================
+    // ====================== remove toggle icon and navbar when clicked navbar link (scroll)  =======================
     // menuIcon.classList.remove('bx-x');
     navbar.classList.remove('active');
 };
 
 top.visible_id = 'one'; 
-//! uncomment later
+
 function swipe() { 
 
     // var right_e = document.getElementById('right'); 
@@ -61,44 +60,8 @@ else if (top.visible_id == 'two') {
 var t = setTimeout("swipe()",3000);
 }
 swipe();
-//!
 
-// const cartButton = document.querySelector('.fa-shopping-cart');
 
-// cartButton.addEventListener('click', function () {
-//     cartButton.classList.toggle('is-active');
-// });
-
-const ITEMS = [
-    {
-        id: 1,
-        name: 'Acai Bowl',
-        price: 5.50,
-        image: 'menu-8.jpg',
-        qty: 1
-    },
-    {
-        id: 2,
-        name: 'Sandwich Muncher',
-        price: 10.99,
-        image: 'dish-2.jpeg',
-        qty: 1
-    },
-    {
-        id: 3,
-        name: 'Pancake Lover',
-        price: 12.99,
-        image: 'dish-1.jpeg',
-        qty: 1
-    },
-    {
-        id: 4,
-        name: 'Waffle Baffle',
-        price: 12.99,
-        image: 'dish-3.png',
-        qty: 1
-    },
-]
 
 const openBtn = document.getElementById('open-cart-btn');
 const cart = document.getElementById('shopping-cart');
@@ -112,10 +75,10 @@ const subtotalPrice = document.getElementById('subtotal-price');
 const itemsList = document.querySelector('.items-list');
 const totalPrice = document.querySelector('.total-price');
 
-// const addToCartBtn = document.querySelector('.atc');
 
 
-let cart_data = []
+
+// let cart_data = []
 
 let item_ids = []
 
@@ -124,11 +87,9 @@ var cart_items_id = []
 openBtn.addEventListener('click', openCart);
 closeBtn.addEventListener('click', closeCart);
 backdrop.addEventListener('click', closeCart);
-// addToCartBtn.addEventListener('click', addToCart);
 
-// renderItems();
 renderCartItems();
-// renderCheckoutItems();
+
 
 function openCart () {
     cart.classList.add('open')
@@ -147,31 +108,11 @@ function closeCart () {
     }, 500);
 }
 
-//? WORKING ON THIS RN !!
 
-// item_ids.push(1);
-// item_ids.push(2);
-// item_ids.push(3);
-// console.log(item_ids)
 localStorage.clear();
 
 function addToCart(item_id) {
-    // QUERY:
-    // 1. check if item_id is already in cart : 
-    // 2. if not, add item_id to cart
-    // 3. if yes, increase qty of item_id in cart
 
-    // const itemFound = item_ids.find((id) => id === item_id)
-
-    // if (itemFound) {
-    //     increaseQty(item_id)
-    // } else {
-    //     item_ids.push(item_id)
-    // }
-
-    //let sql = `INSERT INTO cart (item_id) VALUES (${item_id})`
-    //const cartItems = document.querySelector('.cart-items');
-    // cartItems.innerHTML = ''
     console.log("cart_items_id = "+cart_items_id)
 
     if (cart_items_id. find(
@@ -204,15 +145,15 @@ function addToCart(item_id) {
 
     
     
-    // updateCart();
+
     openCart();
     console.log(cart_items_id);
 
     
     console.log(item_id);
     console.log(item_ids);
-    console.log("OOGABOOGA");
 
+    
     console.log(item_ids.toString());
     console.log("("+item_ids.toString()+")");
     var id_list = "("+item_ids.toString()+")";
@@ -223,45 +164,17 @@ function addToCart(item_id) {
 }
 
 
-// 1. get items from database
-// 2. create a div/img/price/name for each item tags using js
-// 3. add the classes (box / shoppingcart) for the styling.
-
-// Add Items to Cart
-function addItem(idx, itemId) {
-    // find same items
-    const foundItem = cart_data.find(
-        (item) => item.id.toString() === itemId.toString()
-    )
-    if (foundItem) {
-        increaseQty(itemId)
-    }else {
-        cart_data.push(ITEMS[idx])
-    }
 
 
-    cart_items_id = cart_items_id.map((item) => {
-        if (item.id == item_id) {
-            console.log("increasing item.qty = "+item.qty)
-            item.qty += 1
-        }
-        return item
-    })
-    console.log("cart_items_id = "+cart_items_id)
 
-
-    
-    updateCart();
-    openCart();
-}
 
 // Remove Cart Items
 function removeCartItem(itemId) {
-    cart_data = cart_data.filter((item) => item.id != itemId)
+    // cart_data = cart_data.filter((item) => item.id != itemId)
     
-    // console.log(item_id);
+
     console.log(item_ids);
-    // console.log("OOGABOOGA");
+
     item_ids = item_ids.filter((item) => item != itemId);
     console.log("item_ids after deleting that item:");
     console.log(item_ids);
@@ -271,15 +184,41 @@ function removeCartItem(itemId) {
     var id_list = "("+item_ids.toString()+")";
 
     localStorage.setItem('id_list', id_list);
+    
+    cart_items_id = JSON.parse(localStorage.getItem('cart_items_id'));
 
+    cart_items_id = cart_items_id.filter((item) => {
+        console.log("filtering:  item.id = "+item.id+" item.qty = "+item.qty+ " itemId = "+itemId)
+        return item.id != itemId;
+        // return item.id.toString() != itemId.toString();
+    })
+        // if (item.id == itemId) {
+        //     console.log("deleting item = "+item.id)
+        // }
+        // else {
+        //     console.log("Inserting item = "+item.id+" item.qty = "+item.qty+" into cart_items_id")
+        //     return item
+        // }
+    // cart_items_id.forEach((cartitem) => {
+    //     console.log("cartitem.id = "+cartitem.id+" cartitem.qty = "+cartitem.qty)
+    // })
+    console.log("cart_items_id = "+cart_items_id)
+    // cart_items_id = cart_items_id.filter((item) => item != null)
+    cart_items_id.forEach((cartitem) => {
+        console.log(cartitem);
+    })
+    localStorage.setItem('cart_items_id', JSON.stringify(cart_items_id))
+    console.log("cart_items_id set in local storage")
 
+    new_cart = JSON.parse(localStorage.getItem('cart_items_id'))
+    console.log("new_cart = "+new_cart)
     updateCart();
-    // updateCheckout()
+
 }
 
 // Increase item qty
 function increaseQty(itemId) {
-    // cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty + 1} : item)
+
     cart_items_id = cart_items_id.map((item) => {
         if (item.id == itemId) {
             item.qty += 1
@@ -295,16 +234,13 @@ function increaseQty(itemId) {
     console.log("cart_items_id set in local storage")
     
     updateCart()
-    // updateCheckout()
 
-    //yahan dalo
-
+    
 }
 
 // Decrease item qty
 function decreaseQty(itemId) {
-    // cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty > 1 ? item.qty - 1 : item.qty} : item)
-    
+
     
     cart_items_id = cart_items_id.map((item) => {
         if ((item.id == itemId) && (item.qty > 1)) {
@@ -324,16 +260,18 @@ function decreaseQty(itemId) {
     
 
     updateCart()
-    // updateCheckout()
 }
 
 //  Calculate Items Number
-function calcItemsNum() {//TODO: sada sahi karo
+function calcItemsNum() {
     let itemsCount = 0
 
-    // cart_items_id = localStorage.getItem('cart_items_id');
-
-    cart_items_id.forEach(item => itemsCount += item.qty)
+    cart_items_id = JSON.parse(localStorage.getItem('cart_items_id'));
+    console.log("cart_items_id = "+cart_items_id);
+    cart_items_id.forEach((item) => {
+        console.log("item.qty = "+item.qty)
+        itemsCount += item.qty;
+    })
 
     id_list = localStorage.getItem('id_list');
     console.log("yeh lo id_list: "+id_list);
@@ -400,22 +338,6 @@ function calcSubtotalPrice() {
 
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -445,11 +367,11 @@ function renderItems() {
 // Display / Render Cart Items
 
 
-function increaseQtyinCart(itemId) {
-    cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty + 1} : item)
-    updateCart()
-    updateCheckout()
-}
+// function increaseQtyinCart(itemId) {
+//     cart_data = cart_data.map((item) => item.id.toString() === itemId.toString() ? {...item, qty: item.qty + 1} : item)
+//     updateCart()
+//     updateCheckout()
+// }
 function renderCartItems() {
     console.log("renderCartItems")
     
@@ -459,20 +381,7 @@ function renderCartItems() {
     
     console.log("Saved Customer ID: "+customerID);
 
-    //? 1. Make the sql query based off of the array item_ids
-    //? 2. run the sql query -> get the items from the database √
-    //? 3. display the items in the cart using while loop of php √
-
-    // for now: trying it on index.php file √
-
-    // console.log(item_ids)
-    // console.log("("+item_ids.toString()+")");          // => (1,4,3)
-    // id_list = "("+item_ids.toString()+")"
-    // query = `SELECT * FROM menu WHERE itemID IN (${id_list})` //? √
-
-
     const cartItems = document.querySelector('.cart-items');
-    // cartItems.innerHTML = 'WEEEEEEEEEEEEEEEEEEEE';
 
     var id_list = localStorage.getItem('id_list');
     console.log("id_list: "+id_list);
@@ -530,7 +439,7 @@ function renderCartItems() {
 
 
     
-    console.log("body===========================================================================");
+    // console.log("body===========================================================================");
     console.log(body);
     });
 
@@ -539,25 +448,25 @@ function renderCartItems() {
    
 }
 
-function test() {
+// function test() {
 
-    var cart_items_id = JSON.parse(localStorage.getItem('cart_items_id'));
-    cart_items_id.forEach(element => {
-        var order_details_url = './order.php?id='+element.id+'&qty='+element.qty;
+//     var cart_items_id = JSON.parse(localStorage.getItem('cart_items_id'));
+//     cart_items_id.forEach(element => {
+//         var order_details_url = './order.php?id='+element.id+'&qty='+element.qty;
         
-        fetch(order_details_url)
-        .then (function (response){
-            return response.text();
-        })
-        .then (function (body) {
-            console.log(body);
-            // window.location.href = "order.php";
+//         fetch(order_details_url)
+//         .then (function (response){
+//             return response.text();
+//         })
+//         .then (function (body) {
+//             console.log(body);
+//             // window.location.href = "order.php";
             
-        })
-    });
+//         })
+//     });
 
 
-}
+// }
 
 function order() {
     
@@ -606,9 +515,6 @@ function order() {
 
 }
 
-// function orderComplete() {
-//     const orderID = document.querySelector('.order-id');
-// }
 
 function renderOrders() {
     console.log("renderOrders");

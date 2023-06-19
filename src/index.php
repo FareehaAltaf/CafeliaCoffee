@@ -27,6 +27,8 @@
 
     <nav class="navbar">
         <a class="active" href="#home">home</a> 
+        <a href="#about">about</a> 
+        <a href="#menu">menu</a> 
     </nav>
 
     <div class="icons">

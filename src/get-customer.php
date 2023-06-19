@@ -1,6 +1,6 @@
 <?php 
 
-// url = './get-customer.php?id='+order['customerID'];
+
 include 'connection.php';
 
 if (isset($_GET['id'])) {

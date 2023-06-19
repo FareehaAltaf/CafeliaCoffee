@@ -2,7 +2,7 @@
 
 include 'connection.php';
 
-// var order_details_url = './order.php?id='+cart_items_id.id+'&qty='+cart_items_id.qty;
+
 
 if(isset($_GET['id']))
 {

@@ -78,7 +78,7 @@
                             <option value="6">Coffee Roaster</option>
                             <option value="7">Dishwasher</option>
                             <option value="8">Maintenance Staff</option>
-                            <option value="9">Customer Service Representativ</option>
+                            <option value="9">Customer Service Representative</option>
                             <option value="10">Server</option>
                         </select>
                     </div>
