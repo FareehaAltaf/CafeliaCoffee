@@ -84,9 +84,9 @@
                     </div>
                     <div class="bday-box">
                         <label>Birth Date:</label>
-                        <span><input type="date" style="background-color: transparent;" name="BirthDate"></span>
+                        <span><input type="date" style="background-color: transparent;" name="BirthDate" required></span>
                     </div>
-                    <input type="text" placeholder="CNIC" title="13 digit long cnic" pattern="[0-9]{13}" name="cnic">
+                    <input type="text" placeholder="CNIC" title="13 digit long cnic" pattern="[0-9]{13}" name="cnic" required>
                     <input type="submit" value="ADD EMPLOYEE" name="submit">
                 </form>
 
